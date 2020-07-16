@@ -32,19 +32,18 @@
 
 // //export default App;
 
-import React from 'react';
-import  { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation';
+// import  { createStackNavigator } from 'react-navigation-stack';
+// import { createAppContainer } from 'react-navigation';
 
-import Carousel from './src/screens/CarouselScreen';
+// import Carousel from './src/screens/CarouselScreen';
 
-const screen ={
-  Carousel:{
-    screen: Carousel
-  },    
-} 
+// const screen ={
+//   Carousel:{
+//     screen: Carousel
+//   }   
+// } 
 
 
-const screenRender = createStackNavigator(screen);
+// const screenRender = createStackNavigator(screen);
 
-export default createAppContainer(screenRender);
+// export default createAppContainer(screenRender);
