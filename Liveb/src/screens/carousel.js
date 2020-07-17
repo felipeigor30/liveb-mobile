@@ -46,7 +46,7 @@ const Carousel = ({ navigation }) => (
   
 );
 Carousel.navigationOptions = {
-  title: 'Carousel',
+  title: 'Voltar',
   headerShown:false 
 }
 
