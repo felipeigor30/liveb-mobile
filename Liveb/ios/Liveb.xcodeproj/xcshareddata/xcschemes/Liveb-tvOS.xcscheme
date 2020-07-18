@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "Liveb-tvOS.app"
-               BlueprintName = "Liveb-tvOS"
-               ReferencedContainer = "container:Liveb.xcodeproj">
+               BuildableName = "liveb-tvOS.app"
+               BlueprintName = "liveb-tvOS"
+               ReferencedContainer = "container:liveb.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "Liveb-tvOSTests.xctest"
-               BlueprintName = "Liveb-tvOSTests"
-               ReferencedContainer = "container:Liveb.xcodeproj">
+               BuildableName = "liveb-tvOSTests.xctest"
+               BlueprintName = "liveb-tvOSTests"
+               ReferencedContainer = "container:liveb.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "Liveb-tvOS.app"
-            BlueprintName = "Liveb-tvOS"
-            ReferencedContainer = "container:Liveb.xcodeproj">
+            BuildableName = "liveb-tvOS.app"
+            BlueprintName = "liveb-tvOS"
+            ReferencedContainer = "container:liveb.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "Liveb-tvOS.app"
-            BlueprintName = "Liveb-tvOS"
-            ReferencedContainer = "container:Liveb.xcodeproj">
+            BuildableName = "liveb-tvOS.app"
+            BlueprintName = "liveb-tvOS"
+            ReferencedContainer = "container:liveb.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
