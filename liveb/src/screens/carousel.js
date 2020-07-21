@@ -51,10 +51,6 @@ Carousel.navigationOptions = {
   headerShown:false 
 }
 
-
-
-
-
 const styles = StyleSheet.create({
   safearea: {
     backgroundColor: '#CC4E35',
