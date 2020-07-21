@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "951649084041",
+    "firebase_url": "https://liveb-investimentos.firebaseio.com",
+    "project_id": "liveb-investimentos",
+    "storage_bucket": "liveb-investimentos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951649084041:android:fc816c87f28c510873dc58",
+        "android_client_info": {
+          "package_name": "com.liveb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "951649084041-npfrtrnehlljtvhucfcqn1l1topapaqg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.liveb",
+            "certificate_hash": "a7e602328e27bd2072fb165949cb8fe71a5f7be0"
+          }
+        },
+        {
+          "client_id": "951649084041-kuj0sm7vr1k6l56deor81mf38ernh718.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRAA7qxkrUt9q4LonB3bitZ2zu4leB8Ww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "951649084041-kuj0sm7vr1k6l56deor81mf38ernh718.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "951649084041-dn1306e9p007sgvlfvtsalag64ps10v6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.investimentos.liveb"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -6,6 +6,11 @@ import { } from 'react-navigation'
 
 
 export default class EscolherPlano extends React.Component{
+    
+    componentDidMount(){
+        
+    }
+
     render(){
         return(
            <SafeAreaView style={styles.container}>
