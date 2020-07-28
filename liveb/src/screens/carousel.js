@@ -8,9 +8,10 @@ import { } from 'react-navigation';
 const { width } = Dimensions.get("window");
 const height = width * 1.3;
 
-const Carousel = ({ navigation }) => (
-//export default class Carousel extends Component {
-
+// const Carousel = ({ navigation }) => (
+export default class Carousel extends Component {
+    render(){
+      return(
 
       <SafeAreaView style={styles.safearea}>
         <ScrollView
@@ -35,17 +36,18 @@ const Carousel = ({ navigation }) => (
           </View>
         </ScrollView>
         <View style={styles.viewButtonsLogin}>
-          <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('Cadastro') }>
+          <TouchableOpacity style={styles.signUpButton} onPress={() => this.props.navigation.navigate('Cadastro') }>
             <Text style={styles.textColorSignUp}>Cadastrar</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.signInButton} onPress={() => navigation.navigate('Login') }>
+          <TouchableOpacity style={styles.signInButton} onPress={() => this.props.navigation.navigate('Login') }>
             <Text style={styles.textColorSignIn}>Entrar</Text>
           </TouchableOpacity>
         </View>
 
       </SafeAreaView>
-  
-);
+      );
+    }
+}
 Carousel.navigationOptions = {
   title: 'Voltar',
   headerShown:false 
@@ -151,6 +153,3 @@ const styles = StyleSheet.create({
     fontWeight: '600'
   }
 });
-
-
-export default Carousel;

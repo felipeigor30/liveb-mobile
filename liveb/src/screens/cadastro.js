@@ -2,6 +2,7 @@ import 'react-native-gesture-handler'
 import React, {Component} from 'react'
 import {View, Text, SafeAreaView, StyleSheet, Image, Dimensions, TextInput, ScrollView, Button, TouchableOpacity }  from 'react-native'
 import { } from 'react-navigation'
+import { firebase } from '@react-native-firebase/auth';
 
 
 
@@ -12,71 +13,113 @@ const height = width * 1.3;
 
 
 // const Cadastro = () => (
-const Cadastro = ({navigation}) =>( 
+export default class Cadastro extends Component{
+    
+    state = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        phoneNumber: '',
+        cpf:'',
+        errorMessage: null,
+    };
 
-    <SafeAreaView style={styles.container}>
-        <ScrollView>
-            <View style={styles.containerForm}>
-                <Image style={styles.logoLiveb} source={require('../assets/logoLiveb.png')} />
-                <TextInput style={styles.inputNome} 
-                label="firstName" 
-                placeholder="Nome" 
-                placeholderTextColor="#fff"
-                />
-                <TextInput 
-                style={styles.inputNome} 
-                label="lastName" 
-                placeholder="Sobrenome" 
-                placeholderTextColor="#fff" />
-                <TextInput 
-                style={styles.inputNome} 
-                label="email" 
-                placeholder="Email" 
-                placeholderTextColor="#fff"
-                keyboardType="email-address" />
+    hendlerSignUp = () =>{
+         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).
+         then(userCredentials => {
+             return userCredentials.user.updateProfile({
+                 displayName: this.state.firstName,
+                
+             });
+            
+         }).catch(error => this.setState({errorMessage: error.message}))
+         
+    };
+    
 
-                <View style={styles.viewPassword}>
-                    <TextInput style={styles.inputPass} 
-                    label="password" 
-                    placeholder="Senha" 
-                    placeholderTextColor="#fff" 
-                    secureTextEntry={true} 
-                    />
-                    <TouchableOpacity style={styles.showPassButtonView} >
-                        <Text style={styles.showPassButton}>ver</Text>    
-                    </TouchableOpacity>
-                </View>
- 
-                <TextInput 
-                style={styles.inputNome} 
-                label="number" 
-                placeholder="Telefone" 
-                placeholderTextColor="#fff"
-                keyboardType="phone-pad" />
+    render(){
+        return(
+            <SafeAreaView style={styles.container}>
+                <ScrollView>
+                    <View style={styles.containerForm}>
+                        <Image style={styles.logoLiveb} source={require('../assets/logoLiveb.png')} />
+                        <TextInput style={styles.inputNome} 
+                        label="firstName" 
+                        placeholder="Nome" 
+                        placeholderTextColor="#fff"
+                        onChangeText={firstName => this.setState({firstName})}
+                        value={this.state.firstName}
+                        />
+                        <TextInput 
+                        style={styles.inputNome} 
+                        label="lastName" 
+                        placeholder="Sobrenome" 
+                        placeholderTextColor="#fff" 
+                        onChangeText={lastName => this.setState({lastName})}
+                        value={this.state.lastName}
+                        />
+                        <TextInput 
+                        style={styles.inputNome} 
+                        label="email" 
+                        placeholder="Email" 
+                        placeholderTextColor="#fff"
+                        keyboardType="email-address" 
+                        onChangeText={email => this.setState({email})}
+                        value={this.state.email}
+                        />
 
-                <TextInput 
-                style={styles.inputNome} 
-                label="doc" 
-                placeholder="CPF" 
-                placeholderTextColor="#fff"
-                keyboardType="numeric" />
+                        <View style={styles.viewPassword}>
+                            <TextInput style={styles.inputPass} 
+                            label="password" 
+                            placeholder="Senha" 
+                            placeholderTextColor="#fff" 
+                            secureTextEntry={true} 
+                            onChangeText={password => this.setState({password})}
+                            value={this.state.password}
+                            />
+                            <TouchableOpacity style={styles.showPassButtonView} >
+                                <Text style={styles.showPassButton}>ver</Text>    
+                            </TouchableOpacity>
+                        </View>
 
-                <TouchableOpacity style={styles.signInButton} onPress={() => navigation.navigate('EscolherPlano') }>
-                    <Text style={styles.signInButtonText} >Cadastrar</Text>
-                </TouchableOpacity>
+                        <TextInput 
+                        style={styles.inputNome} 
+                        label="number" 
+                        placeholder="Telefone" 
+                        placeholderTextColor="#fff"
+                        keyboardType="phone-pad"
+                        onChangeText={phoneNumber => this.setState({phoneNumber})}
+                        value={this.state.phoneNumber}
+                         />
 
-                <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('Login') }>
-                    <Text style={styles.signUpButtonText}>Já tem cadastro? Clique aqui</Text>
-                </TouchableOpacity>
-            </View>
-        </ScrollView>
-        </SafeAreaView>
-);    
+                        <TextInput 
+                        style={styles.inputNome} 
+                        label="doc" 
+                        placeholder="CPF" 
+                        placeholderTextColor="#fff"
+                        keyboardType="numeric"
+                        onChangeText={cpf => this.setState({cpf})}
+                        value={this.state.cpf}
+                        />
 
-Cadastro.navigationOptions = {
-  title: 'Cadastro',
-  headerShown: false,
-}
+                        <TouchableOpacity 
+                        style={styles.signInButton} 
+                        onPress={() => this.props.navigation.navigate(this.hendlerSignUp)}>
+                            <Text style={styles.signInButtonText} >Cadastrar</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity 
+                        style={styles.signUpButton} 
+                        onPress={() => this.props.navigation.navigate('Login') }>
+                            <Text style={styles.signUpButtonText}>Já tem cadastro? Clique aqui</Text>
+                        </TouchableOpacity>
+                    </View>
+                </ScrollView>
+            </SafeAreaView>
+        );
+    }
+}    
 
 const styles = StyleSheet.create({
     container:{
@@ -156,5 +199,3 @@ const styles = StyleSheet.create({
     }
 });
 
-
-export default Cadastro;

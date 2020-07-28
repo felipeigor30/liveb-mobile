@@ -1,12 +1,21 @@
-import React,{Component} from 'react'
-import {View, Text, SafeAreaView, StyleSheet, FlatList, TouchableOpacity, Image, Linking} from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons'
+import React,{Component} from 'react';
+import {View, Text, SafeAreaView, StyleSheet, FlatList, TouchableOpacity, Image, Linking} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 Icon.loadFont();
-import {createAppContainer} from 'react-navigation'
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 import {  } from 'react-native-gesture-handler';
+import firebase from '@react-native-firebase/app';
+import auth from '@react-native-firebase/auth';
 
-class Home extends React.Component{
+export default class Home extends Component{
+    state = {
+        email: '',
+        displayName: '',
+    };
+    componentDidMount(){
+        const {email, displayName} = firebase.auth().currentUser;
+        this.setState({email, displayName});
+        
+    }
     render(){
         const docs = [
             {
@@ -46,14 +55,13 @@ class Home extends React.Component{
                         <TouchableOpacity style={{alignSelf:'flex-end'}} onPress={() => Linking.openURL('https://api.whatsapp.com/send?phone=5516993850380&text=Teste')}>
 
                         <Image source={require('../assets/support-button.png')}></Image>
-                    </TouchableOpacity>
-                    <Text style={styles.userNameText}>Olá José Ferreia da Silva</Text>                
-                    
-                    <Text style={{color: '#fff',fontSize: 45, fontWeight: 'bold', alignSelf: 'center'}}>R$ 1000</Text>
+                    </TouchableOpacity>                                
+                    <Text style={{color: '#fff',fontSize: 55, fontWeight: 'bold', alignSelf: 'center'}}>R$ 1000</Text>
                     <Text style={{color:'#fff', alignSelf: 'center',marginVertical:10}}>valor total de cota comprada</Text>
                     
                 </View>
                 <View style={styles.cardViewIncome}>
+                {/* <TouchableOpacity style={{alignSelf:'flex-end'}} onPress={() => Linking.openURL()}> */}
                     <Text style={{color:'#CC4E35'}}>Rendimentos</Text>
                     <FlatList
                         data={docs}
@@ -115,4 +123,3 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Home;

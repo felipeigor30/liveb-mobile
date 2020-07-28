@@ -1,9 +1,12 @@
 import 'react-native-gesture-handler'
-import React from 'react'
+import React, { Component } from 'react'
 import { SafeAreaView, View, Text, StyleSheet } from 'react-native';
 import { } from 'react-navigation'
+import firebase from '@react-native-firebase/app'
 
-const ContaLiveb = ({navigation}) => (
+export default class ContaLiveb extends Component{
+    render(){
+        return (
     <SafeAreaView style={styles.container}>
 
         <View style={styles.titleContainer}>
@@ -34,6 +37,8 @@ const ContaLiveb = ({navigation}) => (
 
     </SafeAreaView>
 );
+}
+}
 
 
 const styles = StyleSheet.create({
@@ -60,8 +65,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     }
 })
-
-export default ContaLiveb;
 
 
 

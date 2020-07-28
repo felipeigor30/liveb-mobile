@@ -1,35 +1,51 @@
-import 'react-native-gesture-handler';
-import React from 'react';
+import 'react-native-gesture-handler';  
 import  { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
+
+
 
 import Carousel from './screens/carousel';
 import Login from './screens/login';
 import Cadastro from './screens/cadastro';
+import LoadingScreen from './screens/loadingScreen';
 import EscolherPlano from './screens/escolherPlano';
-
-import TabNavigator from './components/tabNavigator';
 import ContaLiveb from './screens/contaLiveb'
 import ContaBancaria from './screens/contaBancaria'
+import Recipe from './screens/recipe';
+import TabNavigator  from './components/tabNavigator';
 
 const Routes = createAppContainer(
   createStackNavigator({
-    Carousel: Carousel,
-    Login: Login,
-    Cadastro: Cadastro,
-    EscolherPlano: EscolherPlano,
-    ContaLiveb: {
-      screen: ContaLiveb,
+    LoadingScreen: {
+      screen: LoadingScreen,
       navigationOptions:{
-        headerShown: true,
-        headerTitle: ' ',
-        headerTransparent: true,
-        headerBackTitleVisible: false,
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
+        headerShown:false
+      }
+    },
+    Carousel: Carousel,
+    Login: {
+      screen:Login,
+      navigationOptions:{
+        headerShown: false,
+      }
+      
+    },
+    Cadastro: {
+      screen: Cadastro,
+      navigationOptions:{
+        headerShown: false
+      }
+    },
+    Recipe: {
+      screen: Recipe,
+      navigationOptions:{
+        headerShown: false
+      }
+    },
+    TabNavigator: {
+      screen: TabNavigator,
+      navigationOptions:{
+        headerShown: false,
       }
     },
     ContaBancaria: {
@@ -45,12 +61,20 @@ const Routes = createAppContainer(
         }, 
       }
     },
-    TabNavigator: {
-      screen: TabNavigator,
+    ContaLiveb: {
+      screen: ContaLiveb,
       navigationOptions:{
-        headerShown: false,
+        headerShown: true,
+        headerTitle: ' ',
+        headerTransparent: true,
+        headerBackTitleVisible: false,
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
       }
     },
+    EscolherPlano: EscolherPlano,
        
   }),
   

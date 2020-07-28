@@ -1,13 +1,34 @@
 import React,{Component} from 'react'
-import {View, Text, SafeAreaView, StyleSheet,TouchableOpacity} from 'react-native'
+import {View, Text, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 Icon.loadFont();
-import {createAppContainer} from 'react-navigation'
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
+import firebase from '@react-native-firebase/app'
+import  { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
 
+import Home from '../screens/home';
+import ContaBancaria from './contaBancaria';
 
-const Configuracao = ({navigation}) =>(
+export default class Configuracao extends Component{
+    
+    signOutUser = () =>{
+        firebase.auth().signOut();
+    }
+    
 
+    render(){
+        const openScreen = createAppContainer(
+            createStackNavigator({
+                ContaBancaria: {
+                  screen: ContaBancaria,
+                  navigationOptions:{
+                    headerShown:false
+                  }
+                },
+            })
+        )
+
+        return(
             <SafeAreaView style={styles.container}>
                 <View style={styles.titleContainer}>
                     <Text style={styles.titlePage}>Configurações</Text>
@@ -22,7 +43,9 @@ const Configuracao = ({navigation}) =>(
                     <Icon name="chevron-forward" size={22} style={styles.icon} />
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonConfig} onPress={() => navigation.navigate('ContaBancaria') }>
+                <TouchableOpacity 
+                style={styles.buttonConfig} 
+                onPress={() => this.props.navigation.navigate('ContaBancaria')}>
                     <Text style={styles.buttonConfigText}>Conta bancaria</Text>
                     <View style={styles.viewIcon}>
                     <Icon name="chevron-forward" size={22} style={styles.icon} />
@@ -34,17 +57,25 @@ const Configuracao = ({navigation}) =>(
                     <Icon name="chevron-forward" size={22} style={styles.icon} />
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonConfig} onPress={() => navigation.navigate('ContaLiveb') }>
+                <TouchableOpacity 
+                style={styles.buttonConfig} 
+                onPress={() => openScreen()}    >
                     <Text style={styles.buttonConfigText}>Conta bancaria Liveb</Text>
+                    <View style={styles.viewIcon}>
+                    <Icon name="chevron-forward" size={22} style={styles.icon} />
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonConfig} onPress={() => this.signOutUser()}>
+                    <Text style={styles.buttonConfigText}>Logoff</Text>
                     <View style={styles.viewIcon}>
                     <Icon name="chevron-forward" size={22} style={styles.icon} />
                     </View>
                 </TouchableOpacity>
                 </View>
             </SafeAreaView>
-);
-
-
+        );
+    }
+}
 
 const styles = StyleSheet.create({
     container:{
@@ -98,4 +129,3 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Configuracao;

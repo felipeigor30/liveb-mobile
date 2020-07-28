@@ -1,40 +1,79 @@
 import 'react-native-gesture-handler'
-import React from 'react'
+import React,{Component} from 'react'
 import {View, Text, SafeAreaView, TextInput, StyleSheet, Image, TouchableOpacity, Dimensions}  from 'react-native'
 import { } from 'react-navigation'
+import { firebase } from '@react-native-firebase/auth';
 
 const { width } = Dimensions.get("window");
 const height = width * 1.3;
-const Login = ({navigation}) =>(
+
+
+export default class Login extends Component {
+
+        state = {
+            email: '',
+            password: '',
+            errorMessage: null,
+            logado: false
+        };
+        
+        handerLogin = () =>{
+            const {email,password} = this.state
     
+            firebase
+            .auth()
+            .signInWithEmailAndPassword(email, password)
+            .catch(error => this.setState({errorMessage: error.message}));
+
+            const {logado} = this.setState(true)
+        };
+
+    
+    render(){
+
+       
+    return(
     <SafeAreaView style={styles.container}>
     <View style={styles.containerForm}>
         <Image style={styles.logoLiveb} source={require('../assets/logoLiveb.png')} />
+        <View style={styles.errorMessage}> 
+        {this.state.errorMessage && <Text style={styles.erro}>{this.state.errorMessage}</Text>}
+        </View>
+    <Text>{this.state.logado}</Text>
         <TextInput style={styles.inputEmail} 
         label="email"
+        value={this.state.email}
+        autoCapitalize="none"
         placeholder="Email" 
         placeholderTextColor="#fff" 
-        keyboardType="email-address" />
+        keyboardType="email-address"
+        onChangeText={email => this.setState({email})} 
+        />
 
         <TextInput style={styles.inputPass} 
         label="pass" 
+        autoCapitalize="none"
         placeholder="Senha" 
         placeholderTextColor="#fff" 
-        secureTextEntry={true} />
+        secureTextEntry={true}
+        onChangeText={password => this.setState({password}) }
+        value={this.state.password}
+        />
 
         <TouchableOpacity>
             <Text style={styles.forgotPassButton}>Esqueceu sua senha?</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.signInButton} onPress={() => navigation.navigate('TabNavigator') }>
-            <Text style={styles.signInButtonText} >Logar</Text>
+        <TouchableOpacity style={styles.signInButton} onPress={this.handerLogin}>
+            <Text style={styles.signInButtonText}>Logar</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.signUpButton}  onPress={() => navigation.navigate('Cadastro') }>
-            <Text style={styles.signUpButtonText}>Ainda não tem cadastro? Clique aqui</Text>
+        <TouchableOpacity style={styles.signUpButton}  onPress={() => this.props.navigation.navigate('Cadastro')}>
+            <Text style={styles.signUpButtonText}>Ainda não tem cadastro?<Text style={{fontWeight:'bold'}}> Clique aqui</Text></Text>
         </TouchableOpacity>
     </View>
 </SafeAreaView>
 );
-
+}
+}
 Login.navigationOptions = {
   title: 'Login',
   headerShown: false,
@@ -103,8 +142,19 @@ const styles = StyleSheet.create({
     signUpButtonText:{
         fontSize: 15,
         color:"#fff",
+    },
+    errorMessage:{
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontWeight: "bold",
+        
+    },
+    erro:{
+        fontSize:18,
+        fontWeight: 'bold',
+        textAlign: "center",
+        color: '#fff',
+        marginVertical:15
     }
 
 });
-
-export default Login;
