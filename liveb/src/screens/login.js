@@ -1,32 +1,35 @@
 import 'react-native-gesture-handler'
 import React,{Component} from 'react'
 import {View, Text, SafeAreaView, TextInput, StyleSheet, Image, TouchableOpacity, Dimensions}  from 'react-native'
-import { } from 'react-navigation'
-import { firebase } from '@react-native-firebase/auth';
+
+
+
+import firebase from '@react-native-firebase/app'
+import auth from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore'
+
+
+
 
 const { width } = Dimensions.get("window");
 const height = width * 1.3;
 
 
-export default class Login extends Component {
-
-        state = {
-            email: '',
-            password: '',
-            errorMessage: null,
-            logado: false
-        };
+export default class LoginScreen extends Component {
+        state={
+        email: '',
+        password: '',
+        errorMessage: null
+      }
         
-        handerLogin = () =>{
-            const {email,password} = this.state
-    
-            firebase
-            .auth()
-            .signInWithEmailAndPassword(email, password)
-            .catch(error => this.setState({errorMessage: error.message}));
-
-            const {logado} = this.setState(true)
-        };
+      handleLogin = () => {
+        const {email, password} = this.state;
+  
+        firebase.auth()
+        .signInWithEmailAndPassword(email, password)
+        .catch(error => this.setState({errorMessage: error.message}))
+        
+      }
 
     
     render(){
@@ -39,19 +42,18 @@ export default class Login extends Component {
         <View style={styles.errorMessage}> 
         {this.state.errorMessage && <Text style={styles.erro}>{this.state.errorMessage}</Text>}
         </View>
-    <Text>{this.state.logado}</Text>
-        <TextInput style={styles.inputEmail} 
-        label="email"
-        value={this.state.email}
+        <Text>{this.state.logado}</Text>
+        <TextInput style={styles.inputEmail}    
         autoCapitalize="none"
         placeholder="Email" 
         placeholderTextColor="#fff" 
-        keyboardType="email-address"
-        onChangeText={email => this.setState({email})} 
+        
+        onChangeText={email => this.setState({email})}
+        value={this.state.email} 
         />
 
         <TextInput style={styles.inputPass} 
-        label="pass" 
+        
         autoCapitalize="none"
         placeholder="Senha" 
         placeholderTextColor="#fff" 
@@ -63,10 +65,10 @@ export default class Login extends Component {
         <TouchableOpacity>
             <Text style={styles.forgotPassButton}>Esqueceu sua senha?</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.signInButton} onPress={this.handerLogin}>
+        <TouchableOpacity style={styles.signInButton} onPress={this.handleLogin}>
             <Text style={styles.signInButtonText}>Logar</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.signUpButton}  onPress={() => this.props.navigation.navigate('Cadastro')}>
+        <TouchableOpacity style={styles.signUpButton}  onPress={() => this.props.navigation.navigate('Register')}>
             <Text style={styles.signUpButtonText}>Ainda não tem cadastro?<Text style={{fontWeight:'bold'}}> Clique aqui</Text></Text>
         </TouchableOpacity>
     </View>
@@ -74,7 +76,7 @@ export default class Login extends Component {
 );
 }
 }
-Login.navigationOptions = {
+LoginScreen.navigationOptions = {
   title: 'Login',
   headerShown: false,
 }

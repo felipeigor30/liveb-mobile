@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>951649084041-890s7lv3rl1e5qo60ff2fourlblhrquq.apps.googleusercontent.com</string>
+	<string>383303598664-l7vr1q3prupfomtmtmaqos8vt79a5881.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.951649084041-890s7lv3rl1e5qo60ff2fourlblhrquq</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>951649084041-npfrtrnehlljtvhucfcqn1l1topapaqg.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.383303598664-l7vr1q3prupfomtmtmaqos8vt79a5881</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAdQuhJEkv_W83E5RJ-mKdKU7C-NRegSfw</string>
+	<string>AIzaSyDAz3rOqOF7rmE4pjCznIPdVkb49QhV2RA</string>
 	<key>GCM_SENDER_ID</key>
-	<string>951649084041</string>
+	<string>383303598664</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>org.reactjs.native.example.Liveb</string>
 	<key>PROJECT_ID</key>
-	<string>liveb-investimentos</string>
+	<string>fir-app-3f29d</string>
 	<key>STORAGE_BUCKET</key>
-	<string>liveb-investimentos.appspot.com</string>
+	<string>fir-app-3f29d.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:951649084041:ios:f6c5a741540c6a9073dc58</string>
+	<string>1:383303598664:ios:c5ffd220820dc723f8ce7d</string>
 	<key>DATABASE_URL</key>
-	<string>https://liveb-investimentos.firebaseio.com</string>
+	<string>https://fir-app-3f29d.firebaseio.com</string>
 </dict>
 </plist>

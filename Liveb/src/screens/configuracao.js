@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {View, Text, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native'
+import {View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Alert} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 Icon.loadFont();
 import firebase from '@react-native-firebase/app'
@@ -8,6 +8,7 @@ import { createAppContainer } from 'react-navigation';
 
 import Home from '../screens/home';
 import ContaBancaria from './contaBancaria';
+import DadosPessoaisScreen from './dadosPessoais'
 
 export default class Configuracao extends Component{
     
@@ -15,18 +16,12 @@ export default class Configuracao extends Component{
         firebase.auth().signOut();
     }
     
-
+    dadosPessoais = () =>{
+        this.props.navigation.navigate("DadosPessoaisScreen")
+        
+    }
     render(){
-        const openScreen = createAppContainer(
-            createStackNavigator({
-                ContaBancaria: {
-                  screen: ContaBancaria,
-                  navigationOptions:{
-                    headerShown:false
-                  }
-                },
-            })
-        )
+        
 
         return(
             <SafeAreaView style={styles.container}>
@@ -37,7 +32,7 @@ export default class Configuracao extends Component{
                     </View>    
                 </View>
                 <View style={styles.cardView}>
-                <TouchableOpacity style={styles.buttonConfig}>
+                <TouchableOpacity style={styles.buttonConfig} onPress={this.dadosPessoais}>
                     <Text style={styles.buttonConfigText}>Dados pessoais</Text>
                     <View style={styles.viewIcon}>
                     <Icon name="chevron-forward" size={22} style={styles.icon} />
@@ -57,9 +52,7 @@ export default class Configuracao extends Component{
                     <Icon name="chevron-forward" size={22} style={styles.icon} />
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity 
-                style={styles.buttonConfig} 
-                onPress={() => openScreen()}    >
+                <TouchableOpacity style={styles.buttonConfig} >
                     <Text style={styles.buttonConfigText}>Conta bancaria Liveb</Text>
                     <View style={styles.viewIcon}>
                     <Icon name="chevron-forward" size={22} style={styles.icon} />

@@ -7,14 +7,14 @@ import {createAppContainer} from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
 
-import Home from '../screens/home';
+import HomeScreen from '../screens/home';
 import Configuracao from '../screens/configuracao';
 
 const TabNavigator = createMaterialBottomTabNavigator(
     
  {
         Home: {
-            screen: Home,
+            screen: HomeScreen,
             navigationOptions:{
                 tabBarIcon: ({tintColor}) =>(   
                     <View>

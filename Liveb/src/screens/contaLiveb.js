@@ -4,6 +4,7 @@ import { SafeAreaView, View, Text, StyleSheet } from 'react-native';
 import { } from 'react-navigation'
 import firebase from '@react-native-firebase/app'
 
+
 export default class ContaLiveb extends Component{
     render(){
         return (

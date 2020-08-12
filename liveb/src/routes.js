@@ -81,26 +81,3 @@ const Routes = createAppContainer(
 );
 
 export default Routes;
-
-
-// const screen ={
-//   Carousel:{
-//     screen: Carousel,
-//     navigationOptions:{
-//       headerStyle:{
-//         backgroundColor: "#CC4E35"
-//       },
-//       headerTintColor: "#CC4E35"
-//     }
-    
-//   },    
-// } 
-
-// const App = () => <Carousel />;
-
-// export default App;
-
-
-// const screenRender = createStackNavigator(screen);
-
-// export default createAppContainer(screenRender);
