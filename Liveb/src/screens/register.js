@@ -22,10 +22,12 @@ export default class RegisterScreen extends Component{
         cpf:'',
         email: '',
         password: '',
-        plano: false,
+        possuiPlano: false,
         nomePlano: '',
         numeroPlano: 0,  
-        errorMessage: null
+        valorInvestido: 0,
+        errorMessage: null,
+
     }
 
     handleCadastro = () =>{
@@ -40,9 +42,11 @@ export default class RegisterScreen extends Component{
               email: email,
               phone: phone,
               cpf: cpf,
-              plano: false,
+              possuiPlano: false,
               nomePlano: '',
-              numeroPlano: 0
+              numeroPlano: 0,
+              valorInvestido: 0
+              
           })
               return userCredentials.user.updateProfile({displayName: this.state.name, })
             }

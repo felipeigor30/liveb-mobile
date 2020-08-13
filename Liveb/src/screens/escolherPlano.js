@@ -25,8 +25,7 @@ export default class EscolherPlano extends Component{
         firebase.firestore().collection('users').doc(userID).update({    
             possuiPlano: true,
             nomePlano: 'Plano GOLD',
-            numeroPlano: 1,
-            
+            numeroPlano: 1, 
             dataEscolhaPlano: firebase.firestore.Timestamp.fromDate(new Date())
                 
         }).then(firebase.auth().onAuthStateChanged((user) => {
@@ -35,25 +34,15 @@ export default class EscolherPlano extends Component{
             }
         }))
     
-        firebase.firestore().collection('pagamentos').doc(userID).update({
-            id0030: '1',
-            id0060: '2',
-            id0090: '3',
-            id0150: '4',
-            id0150: '5',
-            id0180: '6',
-            pagar0030: handleData(1),
-            pagar0060: handleData(2),
-            pagar0090: handleData(3),
-            pagar0120: handleData(4),
-            pagar0150: handleData(5),
-            pagar0180: handleData(6),
-            statusPagamento0030: false,
-            statusPagamento0060: false,
-            statusPagamento0090: false,
-            statusPagamento0120: false,
-            statusPagamento0150: false,
-            statusPagamento0180: false,
+        firebase.firestore().collection('pagamentos').doc(userID).set({
+            pags: [
+                { id: 1, pagar:handleData(1), statusPagamento: false},
+                { id: 2, pagar:handleData(2), statusPagamento: false},
+                { id: 3, pagar:handleData(3), statusPagamento: false},
+                { id: 4, pagar:handleData(4), statusPagamento: false},
+                { id: 5, pagar:handleData(5), statusPagamento: false},
+                { id: 6, pagar:handleData(6), statusPagamento: false},
+            ],
         })
     
     }
@@ -63,20 +52,28 @@ export default class EscolherPlano extends Component{
             possuiPlano: true,
             nomePlano: 'Plano PLATINUM',
             numeroPlano: 2,
-            pagamentos: {
-                pg1: { id: '1', pagar:handleData(1), statusPagamento: false},
-                pg2: { id: '2', pagar:handleData(2), statusPagamento: false},
-                pg3: { id: '3', pagar:handleData(3), statusPagamento: false},
-                pg4: { id: '4', pagar:handleData(4), statusPagamento: false},
-                pg5: { id: '5', pagar:handleData(5), statusPagamento: false},
-                pg6: { id: '6', pagar:handleData(6), statusPagamento: false},
-            },
             dataEscolhaPlano: firebase.firestore.Timestamp.fromDate(new Date())  
         }).then(firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.props.navigation.navigate("ConfirmarPlanoPlatinum")
             } 
         }))
+        firebase.firestore().collection('pagamentos').doc(userID).set({
+            pags: [
+                { id: 1, pagar:handleData(1), statusPagamento: false},
+                { id: 2, pagar:handleData(2), statusPagamento: false},
+                { id: 3, pagar:handleData(3), statusPagamento: false},
+                { id: 4, pagar:handleData(4), statusPagamento: false},
+                { id: 5, pagar:handleData(5), statusPagamento: false},
+                { id: 6, pagar:handleData(6), statusPagamento: false},
+                { id: 7, pagar:handleData(7), statusPagamento: false},
+                { id: 8, pagar:handleData(8), statusPagamento: false},
+                { id: 9, pagar:handleData(9), statusPagamento: false},
+                { id: 10, pagar:handleData(10), statusPagamento: false},
+                { id: 11, pagar:handleData(11), statusPagamento: false},
+                { id: 12, pagar:handleData(12), statusPagamento: false},
+            ],
+        })
     }
     handlePlanBlack = () => { 
         const userID = firebase.auth().currentUser.uid
@@ -84,14 +81,6 @@ export default class EscolherPlano extends Component{
             possuiPlano: true,
             nomePlano: 'Plano BLACK',
             numeroPlano: 3,
-            pagamentos: {
-                pg1: { id: '1', pagar:handleData(1), statusPagamento: false},
-                pg2: { id: '2', pagar:handleData(2), statusPagamento: false},
-                pg3: { id: '3', pagar:handleData(3), statusPagamento: false},
-                pg4: { id: '4', pagar:handleData(4), statusPagamento: false},
-                pg5: { id: '5', pagar:handleData(5), statusPagamento: false},
-                pg6: { id: '6', pagar:handleData(6), statusPagamento: false},
-            },
             dataEscolhaPlano: firebase.firestore.Timestamp.fromDate(new Date())   
         })
         .then(firebase.auth().onAuthStateChanged((user) => {
@@ -99,6 +88,34 @@ export default class EscolherPlano extends Component{
                 this.props.navigation.navigate("ConfirmarPlanoBlack")
             } 
         }))
+        firebase.firestore().collection('pagamentos').doc(userID).set({
+            pags: [
+                { id: 1, pagar:handleData(1), statusPagamento: false},
+                { id: 2, pagar:handleData(2), statusPagamento: false},
+                { id: 3, pagar:handleData(3), statusPagamento: false},
+                { id: 4, pagar:handleData(4), statusPagamento: false},
+                { id: 5, pagar:handleData(5), statusPagamento: false},
+                { id: 6, pagar:handleData(6), statusPagamento: false},
+                { id: 7, pagar:handleData(7), statusPagamento: false},
+                { id: 8, pagar:handleData(8), statusPagamento: false},
+                { id: 9, pagar:handleData(9), statusPagamento: false},
+                { id: 10, pagar:handleData(10), statusPagamento: false},
+                { id: 11, pagar:handleData(11), statusPagamento: false},
+                { id: 12, pagar:handleData(12), statusPagamento: false},
+                { id: 13, pagar:handleData(13), statusPagamento: false},
+                { id: 14, pagar:handleData(14), statusPagamento: false},
+                { id: 15, pagar:handleData(15), statusPagamento: false},
+                { id: 16, pagar:handleData(16), statusPagamento: false},
+                { id: 17, pagar:handleData(17), statusPagamento: false},
+                { id: 18, pagar:handleData(18), statusPagamento: false},
+                { id: 19, pagar:handleData(19), statusPagamento: false},
+                { id: 20, pagar:handleData(20), statusPagamento: false},
+                { id: 21, pagar:handleData(21), statusPagamento: false},
+                { id: 22, pagar:handleData(22), statusPagamento: false},
+                { id: 23, pagar:handleData(22), statusPagamento: false},
+                { id: 24, pagar:handleData(24   ), statusPagamento: false},
+            ],
+        })
     }
     componentDidMount(){
     }

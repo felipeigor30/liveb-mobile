@@ -16,15 +16,22 @@ export default class HomeScreen extends Component {
       displayName: '',
       name: '',
       valorInvestido: 0,
-
+      newPagamentos: []
     }
-    
-
   }
 
+  renderList = ({ pagar, statusPagamento }) => {
+    return (
+      <Text style={[(statusPagamento === true) ? styles.statePago : styles.stateNaoPago]}>
+        Pagamento {pagar} {(statusPagamento === true ? 'pago' : 'a receber')}
+      </Text>
 
+    )
+  }
 
   componentDidMount() {
+
+
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         const { displayName, email } = firebase.auth().currentUser;
@@ -33,83 +40,30 @@ export default class HomeScreen extends Component {
         const userID = firebase.auth().currentUser.uid
         firebase.firestore().collection('users').doc(userID).onSnapshot(doc => {
           var valorInvestido = doc.data().valorInvestido
+
           this.setState({ valorInvestido: valorInvestido })
           var name = doc.data().name
           this.setState({ name: name })
         })
+        firebase.firestore().collection('users').doc(userID).onSnapshot(doc => {
+          var status = doc.data().valorInvestido
+          if (status > 0) {
+            firebase.firestore().collection('pagamentos').doc(userID).onSnapshot((snapshot) => {
+              const rest = [...snapshot.data().pags]
+
+              this.setState(this.state.newPagamentos = rest)
+              console.log(this.state.newPagamentos)
+
+            })
+          } else {
+            console.log('passou com erro')
+          }
+        })
       }
     })
-
-    //new line
-    
-
   }
-  deslogarUsuario = () => { firebase.auth().signOut() }
 
   render() {
-    const userID = firebase.auth().currentUser.uid
-    firebase.firestore().collection('pagamentos').doc(userID)
-    .onSnapshot(doc => {
-      var pgt = doc.data()
-      
-      this.setState({ id0030: pgt.id0030  })
-      this.setState({ id0060: pgt.id0060  })
-      this.setState({ id0090: pgt.id0090  })
-      this.setState({ id0120: pgt.id0120  })
-      this.setState({ id0150: pgt.id0150  })
-      this.setState({ id0180: pgt.id0180  })
-      this.setState({ pagar0030: pgt.pagar0030  })
-      this.setState({ pagar0060: pgt.pagar0060  })
-      this.setState({ pagar0090: pgt.pagar0090  })
-      this.setState({ pagar0120: pgt.pagar0120  })
-      this.setState({ pagar0150: pgt.pagar0150  })
-      this.setState({ pagar0180: pgt.pagar0180  })
-      this.setState({ statusPagamento0030: pgt.statusPagamento0030  })
-      this.setState({ statusPagamento0060: pgt.statusPagamento0060  })
-      this.setState({ statusPagamento0090: pgt.statusPagamento0090  })
-      this.setState({ statusPagamento0120: pgt.statusPagamento0120  })
-      this.setState({ statusPagamento0150: pgt.statusPagamento0150  })
-      this.setState({ statusPagamento0180: pgt.statusPagamento0180  })
-        
-      
-    })
-    
-      const docs = [
-        {
-          id: this.state.id0030,
-          title: this.state.pagar0030 + ' pagamento',
-          state: this.state.statusPagamento0030
-        },
-        {
-          id: this.state.id0060,
-          title: this.state.pagar0060 + ' pagamento',
-          state: this.state.statusPagamento0060
-        },
-        {
-          id: this.state.id0090,
-          title: this.state.pagar0090 + ' pagamento',
-          state: this.state.statusPagamento0090
-        },
-        {
-          id: this.state.id0120,
-          title: this.state.pagar0120 + ' pagamento',
-          state: this.state.statusPagamento0120
-        },
-        {
-          id: this.state.id0150,
-          title: this.state.pagar0150 + ' pagamento',
-          state: this.state.statusPagamento0150
-        },
-        {
-          id: this.state.id0180,
-          title: this.state.pagar0180 + ' pagamento',
-          state: this.state.statusPagamento0180
-        },
-      
-      ]
-    
-    
-
 
     return (
       <SafeAreaView style={styles.container}>
@@ -122,12 +76,14 @@ export default class HomeScreen extends Component {
         <View style={styles.cardViewIncome}>
           <Text style={{ color: '#CC4E35' }}>Rendimentos</Text>
           <FlatList
-          
-            data={docs}
+
+            data={this.state.newPagamentos}
             keyExtractor={item => item.id}
-            renderItem={({ item }) => <Text style={[(item.state === true) ? styles.statePago : styles.stateNaoPago]}>{item.title}</Text>}
+            renderItem={({ item }) => this.renderList(item)}
+            // renderItem={({ item }) => <Text style={[(item.state === true) ? styles.statePago : styles.stateNaoPago]}>{item.title}</Text>}
             style={styles.componentFlatlistItem}
-            
+            showsVerticalScrollIndicator={false}
+
           />
 
         </View>
@@ -161,7 +117,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30,
   },
   statePago: {
-    fontSize: 18,
+    fontSize: 15,
+    textTransform: "uppercase",
     color: '#30cb00',
     marginVertical: 10,
     paddingVertical: 10,
@@ -169,8 +126,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   stateNaoPago: {
-    fontSize: 18,
-    color: '#F00',
+    fontSize: 15,
+    textTransform: "uppercase",
+    color: '#bbb',
     marginVertical: 10,
     paddingVertical: 10,
     borderBottomColor: 'rgba(0,0,0,0.1)',
@@ -183,4 +141,3 @@ const styles = StyleSheet.create({
 
   }
 });
-
