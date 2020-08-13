@@ -1,23 +1,22 @@
 import React,{Component} from 'react'
-import {View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Alert} from 'react-native'
+import {View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Alert, Button} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 Icon.loadFont();
 import firebase from '@react-native-firebase/app'
 import  { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 
-import Home from '../screens/home';
-import ContaBancaria from './contaBancaria';
-import DadosPessoaisScreen from './dadosPessoais'
 
 export default class Configuracao extends Component{
+    
     
     signOutUser = () =>{
         firebase.auth().signOut();
     }
     
+
     dadosPessoais = () =>{
-        this.props.navigation.navigate("DadosPessoaisScreen")
+        this.props.navigation.pop('DadosPessoais')
         
     }
     render(){
@@ -32,7 +31,7 @@ export default class Configuracao extends Component{
                     </View>    
                 </View>
                 <View style={styles.cardView}>
-                <TouchableOpacity style={styles.buttonConfig} onPress={this.dadosPessoais}>
+                <TouchableOpacity style={styles.buttonConfig} onPress={() =>this.props.navigation.navigate('DadosPessoais')}>
                     <Text style={styles.buttonConfigText}>Dados pessoais</Text>
                     <View style={styles.viewIcon}>
                     <Icon name="chevron-forward" size={22} style={styles.icon} />

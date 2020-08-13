@@ -7,8 +7,8 @@ import firestore from '@react-native-firebase/firestore'
 
 
 //Navigation
-import {createAppContainer, createSwitchNavigator} from 'react-navigation'
-import {createStackNavigator} from 'react-navigation-stack'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
 
 
 
@@ -18,7 +18,7 @@ import LoadingScreen from './screens/loading'
 import LoginScreen from './screens/login'
 import RegisterScreen from './screens/register'
 import Recipe from './screens/recipe';
-import TabNavigator  from './components/tabNavigator';
+import TabNavigator from './components/tabNavigator';
 import HomeScreen from './screens/home'
 import EscolherPlano from './screens/escolherPlano'
 
@@ -68,64 +68,68 @@ const firebaseConfig = {
   appId: "1:951649084041:web:760ddf4cd367b80473dc58",
   measurementId: "G-38026TPWQ0"
 };
-  if(!firebase.apps.length){
-    firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
 }
 
 
 
 const AppStack = createStackNavigator({
-  Recipe: { screen: Recipe, navigationOptions:{ headerShown: false}},
+  Recipe: { screen: Recipe, navigationOptions: { headerShown: false } },
   TabNavigator: TabNavigator,
-  
-  Home: { screen: HomeScreen, navigationOptions:{ headerShown: false}},
-  EscolherPlano: { screen: EscolherPlano, navigationOptions:{headerShown: false}},
 
-  ConfirmarPlanoGold: { screen: ConfirmarPlanoGold, navigationOptions:{ headerShown: false}},
-  ConfirmarPlanoPlatinum: { screen: ConfirmarPlanoPlatinum, navigationOptions:{ headerShown: false}},
-  ConfirmarPlanoBlack: { screen: ConfirmarPlanoBlack, navigationOptions:{ headerShown: false}},
+  Home: { screen: HomeScreen, navigationOptions: { headerShown: false } },
+  EscolherPlano: { screen: EscolherPlano, navigationOptions: { headerShown: false } },
 
-  ComprarCotasGold: { screen: ComprarCotasGold, navigationOptions:{ headerShown: false}},
-  ComprarCotasPlatinum: { screen: ComprarCotasPlatinum, navigationOptions:{ headerShown: false}},
-  ComprarCotasBlack: { screen: ComprarCotasBlack, navigationOptions:{ headerShown: false}},
-  
-  ConfirmarDeposito: { screen: ConfirmarDeposito, navigationOptions:{ headerShown: false}},
-  PedirContaBancaria: { screen: PedirContaBancaria, navigationOptions:{ headerShown: false}},
-  CadastroContaBancaria: { screen: CadastroContaBancaria, navigationOptions:{ headerShown: false}},
-  
-  ContratoGold: { screen: ContratoGold, navigationOptions:{ headerShown: false}},
-  ContratoPlatinum: { screen: ContratoPlatinum, navigationOptions:{ headerShown: false}},
-  ContratoBlack: { screen: ContratoBlack, navigationOptions:{ headerShown: false}},
+  ConfirmarPlanoGold: { screen: ConfirmarPlanoGold, navigationOptions: { headerShown: false } },
+  ConfirmarPlanoPlatinum: { screen: ConfirmarPlanoPlatinum, navigationOptions: { headerShown: false } },
+  ConfirmarPlanoBlack: { screen: ConfirmarPlanoBlack, navigationOptions: { headerShown: false } },
 
-  ContaLiveb: { screen: ContaLiveb, navigationOptions:{ headerShown: false}},
-  DadosPessoais: { screen: DadosPessoaisScreen, navigationOptions:{ headerShown: false}},
-  ContaBancaria: ContaBancaria,
+  ComprarCotasGold: { screen: ComprarCotasGold, navigationOptions: { headerShown: false } },
+  ComprarCotasPlatinum: { screen: ComprarCotasPlatinum, navigationOptions: { headerShown: false } },
+  ComprarCotasBlack: { screen: ComprarCotasBlack, navigationOptions: { headerShown: false } },
+
+  ConfirmarDeposito: { screen: ConfirmarDeposito, navigationOptions: { headerShown: false } },
+  PedirContaBancaria: { screen: PedirContaBancaria, navigationOptions: { headerShown: false } },
+  CadastroContaBancaria: { screen: CadastroContaBancaria, navigationOptions: { headerShown: false } },
+
+  ContratoGold: { screen: ContratoGold, navigationOptions: { headerShown: false } },
+  ContratoPlatinum: { screen: ContratoPlatinum, navigationOptions: { headerShown: false } },
+  ContratoBlack: { screen: ContratoBlack, navigationOptions: { headerShown: false } },
+
+   ContaLiveb: { screen: ContaLiveb, navigationOptions: { headerShown: false } },
+   DadosPessoais: { screen: DadosPessoaisScreen, navigationOptions: { headerShown: false } },
+   ContaBancaria: ContaBancaria,
 })
 
 const AuthStack = createStackNavigator({
   Login: {
-    screen: LoginScreen, 
-    navigationOptions:{headerShown: false}},
+    screen: LoginScreen,
+    navigationOptions: { headerShown: false }
+  },
   Register: {
     screen: RegisterScreen,
-    navigationOptions:{
+    navigationOptions: {
       headerShown: false
     }
-  } ,
+  },
 
 })
 
+
+
 export default createAppContainer(
   createSwitchNavigator(
-  {
-    Loading: LoadingScreen,
-    App: AppStack,
-    Auth: AuthStack,
-    
-  },
-  {
-    initialRouteName: "Loading"
-  }
+    {
+      Loading: LoadingScreen,
+      App: AppStack,
+      Auth: AuthStack,
+      
+
+    },
+    {
+      initialRouteName: "Loading"
+    }
   )
 
 );
