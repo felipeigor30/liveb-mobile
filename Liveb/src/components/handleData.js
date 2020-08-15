@@ -1,17 +1,26 @@
 import React from 'react'
 
-const HandleData = (qtd) => {
+const handleData = (qtd) => {
 
-    const meses = new Array("Janeiro", "Fevereiro","Março", "Abril","Maio","Junho","Julho","Agosto","Setembro", "Outubro","Novembro","Dezembro")
-    const semanas = new Array("Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira",  "Quinta-Feira", "Sexta-Feira", "Sábado")
-    const dt = new Date()
-    const ndt = new Date()
-    ndt.setMonth(dt.getMonth() + qtd);
-    const dia = ndt.getDate()
-    const mes = ndt.getMonth()
-    const ano =  ndt.getFullYear();
-    
-    return dia + " " + meses[mes] + " " + ano
+    var dia = new Date().getDate()
+    var meses = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro")
+
+    if (dia <= 15){
+    var d = new Date();
+    d.setDate(17);
+    var newDate = new Date(d.setMonth(d.getMonth() + qtd));
+    var mes = newDate.getMonth()
+    var ano = newDate.getFullYear()
+	  return d.getDate() + " " + meses[mes] + " " + ano
+  }
+  else{ 
+    var d = new Date();
+    d.setDate(2);
+    var newDate = new Date(d.setMonth(d.getMonth() + qtd + 1));
+    var mes = newDate.getMonth()
+    var ano = newDate.getFullYear()
+	return d.getDate() + " " + meses[mes] + " " + ano
+  }
 }
 
-export default HandleData
+export default handleData

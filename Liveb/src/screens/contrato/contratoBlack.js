@@ -49,7 +49,7 @@ export default class ContratoBlack extends Component {
         return (
             <View style={styles.container}>
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <WebView source={{ uri: 'https://drive.google.com/file/d/1O3h5VLmQqGn-f_MHJz_DAij8OgyEZ5Ui/view?usp=sharing' }}
+                    <WebView source={{ uri: 'https://drive.google.com/file/d/1QCgrDAJj2fop4DyQcLRUP_rFcw3COnly/view?usp=sharing' }}
                         style={{ width: width2, marginTop: 55 }} />
                     <View style={{ flexDirection: 'row', alignItems: "center", marginVertical: 20 }}>
                         <CheckBox style={{ width: 30, height: 30, marginHorizontal: 15 }}

@@ -10,7 +10,7 @@ import firestore from '@react-native-firebase/firestore'
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 
-
+import StatusBar from './config/statusBarConfig'
 
 //Screens
 import LoadingScreen from './screens/loading'
@@ -97,9 +97,9 @@ const AppStack = createStackNavigator({
   ContratoPlatinum: { screen: ContratoPlatinum, navigationOptions: { headerShown: false } },
   ContratoBlack: { screen: ContratoBlack, navigationOptions: { headerShown: false } },
 
-   ContaLiveb: { screen: ContaLiveb, navigationOptions: { headerShown: false } },
-   DadosPessoais: { screen: DadosPessoaisScreen, navigationOptions: { headerShown: false } },
-   ContaBancaria: ContaBancaria,
+  ContaLiveb: { screen: ContaLiveb, navigationOptions: { headerShown: false } },
+  DadosPessoais: { screen: DadosPessoaisScreen, navigationOptions: { headerShown: false } },
+  ContaBancaria: ContaBancaria,
 })
 
 const AuthStack = createStackNavigator({
@@ -115,8 +115,6 @@ const AuthStack = createStackNavigator({
   },
 
 })
-
-
 
 export default createAppContainer(
   createSwitchNavigator(

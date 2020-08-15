@@ -38,14 +38,13 @@ export default class Recipe extends Component{
                     } 
                 })
               }) 
-          }else{
-              console.log('Erro na doc.data.plano') 
           }
         })
       
       }
     render(){
         return(
+          
             <TabNavigator />
         )
     }

@@ -17,11 +17,10 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* LivebTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LivebTests.m */; };
-		78F7D5BE24DFBF1300F09B2E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78F7D5BD24DFBF1300F09B2E /* GoogleService-Info.plist */; };
+		78A84D1524E7ABDE0041C697 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78A84D1424E7ABDE0041C697 /* GoogleService-Info.plist */; };
 		DEF02F5B48E6D2C7FFDD4C2A /* libPods-Liveb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE9C983AA4E47F00FDA7776 /* libPods-Liveb.a */; };
 		E05DAC1A2F3120C847B7C437 /* libPods-Liveb-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 085A7AD2F164C5F832874707 /* libPods-Liveb-tvOS.a */; };
 		EC0B1C3E73A1F0194A3EAA2F /* libPods-Liveb-LivebTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B0490EB7AE20C1E2AB5592 /* libPods-Liveb-LivebTests.a */; };
-		FB321D4A24C726D300C12CE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB321D4924C726D300C12CE4 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +59,7 @@
 		4CE9C983AA4E47F00FDA7776 /* libPods-Liveb.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Liveb.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E0FC27823D6731CF088D9E0 /* Pods-Liveb-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liveb-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Liveb-tvOSTests/Pods-Liveb-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5BCC1047D70CC1AFEEF10E7F /* Pods-Liveb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liveb.release.xcconfig"; path = "Target Support Files/Pods-Liveb/Pods-Liveb.release.xcconfig"; sourceTree = "<group>"; };
-		78F7D5BD24DFBF1300F09B2E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		78A84D1424E7ABDE0041C697 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B0CC53A724C4F34C83D6809D /* Pods-Liveb-LivebTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liveb-LivebTests.release.xcconfig"; path = "Target Support Files/Pods-Liveb-LivebTests/Pods-Liveb-LivebTests.release.xcconfig"; sourceTree = "<group>"; };
 		BCA71B8056AC16A4A7E178A6 /* Pods-Liveb-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liveb-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Liveb-tvOS/Pods-Liveb-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C0B135A2632CB504C83AF07A /* Pods-Liveb-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liveb-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Liveb-tvOS/Pods-Liveb-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,7 +69,6 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F31C06807FAA72C855AB5A81 /* Pods-Liveb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liveb.debug.xcconfig"; path = "Target Support Files/Pods-Liveb/Pods-Liveb.debug.xcconfig"; sourceTree = "<group>"; };
-		FB321D4924C726D300C12CE4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +127,6 @@
 		13B07FAE1A68108700A75B9A /* Liveb */ = {
 			isa = PBXGroup;
 			children = (
-				FB321D4924C726D300C12CE4 /* GoogleService-Info.plist */,
-				78F7D5BD24DFBF1300F09B2E /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -180,6 +176,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				78A84D1424E7ABDE0041C697 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* Liveb */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* LivebTests */,
@@ -347,9 +344,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				78F7D5BE24DFBF1300F09B2E /* GoogleService-Info.plist in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				FB321D4A24C726D300C12CE4 /* GoogleService-Info.plist in Resources */,
+				78A84D1524E7ABDE0041C697 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

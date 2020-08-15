@@ -52,12 +52,10 @@ export default class HomeScreen extends Component {
               const rest = [...snapshot.data().pags]
 
               this.setState(this.state.newPagamentos = rest)
-              console.log(this.state.newPagamentos)
+              
 
             })
-          } else {
-            console.log('passou com erro')
-          }
+          } 
         })
       }
     })

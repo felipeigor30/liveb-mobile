@@ -47,7 +47,7 @@ export default class ContratoGold extends Component {
         return (
             <View style={styles.container}>
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <WebView source={{ uri: 'https://drive.google.com/file/d/1h0v70A3ZEbxdFfYaTKhNPMxP3I9zb9QA/view?usp=sharing5' }}
+                    <WebView source={{ uri: 'https://drive.google.com/file/d/1XAu0l5ZgJwP2s1ddu0KHI7ahpp8LRDVD/view?usp=sharing' }}
                         style={{ width: width2, marginTop: 55 }} />
                     <View style={{ flexDirection: 'row', alignItems: "center", marginVertical: 20 }}>
                         <CheckBox style={{ width: 30, height: 30, marginHorizontal: 15 }}
