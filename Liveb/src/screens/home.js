@@ -1,4 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
+import * as Animatable from 'react-native-animatable'
 import { View, Text, SafeAreaView, StyleSheet, FlatList, TouchableOpacity, Image, Linking } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 Icon.loadFont();
@@ -19,11 +20,22 @@ export default class HomeScreen extends Component {
       newPagamentos: []
     }
   }
+  renderSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 1,
+          width: "100%",
+          backgroundColor: "#ffffff",
+        }}
+      />
+    );
+  };
 
   renderList = ({ pagar, statusPagamento }) => {
     return (
       <Text style={[(statusPagamento === true) ? styles.statePago : styles.stateNaoPago]}>
-        Pagamento {pagar} {(statusPagamento === true ? 'pago' : 'a receber')}
+        Recebimento em {pagar} {(statusPagamento === true ? ' ' : ' ')}
       </Text>
 
     )
@@ -71,10 +83,10 @@ export default class HomeScreen extends Component {
           <Text style={{ color: '#fff', fontSize: 55, fontWeight: 'bold', alignSelf: 'center' }}>R$ {this.state.valorInvestido}</Text>
           <Text style={{ color: '#fff', alignSelf: 'center', marginVertical: 10 }}>valor total de cota comprada</Text>
         </View>
-        <View style={styles.cardViewIncome}>
-          <Text style={{ color: '#CC4E35' }}>Rendimentos</Text>
+        <Animatable.View style={styles.cardViewIncome} animation='slideInUp'>
+          <Text style={{ color: '#fff' }}>Rendimentos</Text>
           <FlatList
-
+            ItemSeparatorComponent={this.renderSeparator}
             data={this.state.newPagamentos}
             keyExtractor={item => item.id}
             renderItem={({ item }) => this.renderList(item)}
@@ -84,7 +96,7 @@ export default class HomeScreen extends Component {
 
           />
 
-        </View>
+        </Animatable.View>
       </SafeAreaView>
     );
   }
@@ -109,7 +121,7 @@ const styles = StyleSheet.create({
   cardViewIncome: {
     paddingTop: 20,
     paddingHorizontal: 30,
-    backgroundColor: '#fff',
+    backgroundColor: '#4b0082',
     flex: 4,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
@@ -133,8 +145,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   componentFlatlistItem: {
-
-    marginHorizontal: 10,
     marginVertical: 10
 
   }

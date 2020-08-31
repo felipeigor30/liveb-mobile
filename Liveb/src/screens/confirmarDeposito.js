@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import * as Animatable from 'react-native-animatable'
 import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native'
 
 import firebase from '@react-native-firebase/app'
@@ -37,21 +38,21 @@ export default class ConfirmarDeposito extends Component{
             <View style={styles.container}>
                 <View style={styles.userNameView}>
                         <WhatsApp />                        
-                        <Text style={{color: '#fff',fontSize: 30, fontWeight: 'bold', alignSelf: 'center', marginBottom:15}}>Confirmar Info Depósito</Text>
+                        <Text style={{color: '#fff',fontSize: 30, fontWeight: 'bold', alignSelf: 'center', marginBottom:15}}>Atenção</Text>
 
                 </View>
-                <View style={styles.cardViewIncome}>
+                <Animatable.View style={styles.cardViewIncome} animation="flipInX">
                     <View style={{flex:1, padding:1}}> 
-                        <Text>
+                        <Text style={{color: '#fff'}}>
                             Para concluir seu investimento
                             Basta realizar um TED ou DOC identificado
                             No valor de R$ <Text style={{fontWeight:'800'}}>{this.state.valorInvestido},00</Text> para a conta da LIVEB:  
                         </Text>
                         <View style={{justifyContent:"center", paddingHorizontal:20, paddingTop:20}}>
-                            <View style={{backgroundColor:'#ddd', padding:10, borderRadius:10 }}>
+                            <View style={{backgroundColor:'#CC4E35', padding:10, borderRadius:10 }}>
                                 <Text style={styles.textTitleBank}>
                                     Instituição: 033 - Santander
-                                </Text>
+                                </Text>    
                                 <Text style={styles.textTitleBank}>
                                     Tipo de conta: Corrente
                                 </Text>
@@ -69,7 +70,7 @@ export default class ConfirmarDeposito extends Component{
                                 </Text>
                             </View>
                         </View>
-                        <Text style={{marginTop:30}}>
+                        <Text style={{color: '#fff', marginTop:30}}>
                             O depóstio só pode ser realizada a partir de 
                             uma conta do mesmo titular cadastrado na LIVEB.
                             Assim que a transferência <Text style={{fontWeight:'800'}}>IDENTIFICADA</Text> for realizada, 
@@ -78,7 +79,7 @@ export default class ConfirmarDeposito extends Component{
                     <TouchableOpacity onPress={this.confirmDeposit} style={styles.botaoComprar}>
                         <Text style={styles.texto}>OK! Farei o depósito</Text>
                     </TouchableOpacity>
-                </View>
+                </Animatable.View>
             </View>
         )
     }
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
         paddingTop:20,
         paddingBottom:20,
         paddingHorizontal:30,
-        backgroundColor: '#fff',
+        backgroundColor: '#4b0082',
         flex:6,
         borderTopLeftRadius:30,
         borderTopRightRadius:30,  
@@ -113,19 +114,20 @@ const styles = StyleSheet.create({
         height:42,
         borderRadius:30,
         backgroundColor: '#CC4E35',
-        width: '80%',
+        width: '100%',
+        marginBottom:30,
         alignSelf:"center",
         justifyContent: "center",
         alignItems: "center"
     },
     texto:{
-        
         color: '#fff',
         fontWeight: "bold"
     },
     textTitleBank:{
         marginVertical:2,
         fontSize:15,
+        color:'#fff',
         fontWeight: '700'
     }
 })

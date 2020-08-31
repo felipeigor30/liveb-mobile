@@ -15,6 +15,7 @@ import StatusBar from './config/statusBarConfig'
 //Screens
 import LoadingScreen from './screens/loading'
 
+import InitialScreen from './screens/initialScreen'
 import LoginScreen from './screens/login'
 import RegisterScreen from './screens/register'
 import Recipe from './screens/recipe';
@@ -103,9 +104,11 @@ const AppStack = createStackNavigator({
 })
 
 const AuthStack = createStackNavigator({
-  Login: {
-    screen: LoginScreen,
-    navigationOptions: { headerShown: false }
+  Splash:{
+    screen: InitialScreen,
+    navigationOptions:{
+      headerShown: false
+    }
   },
   Register: {
     screen: RegisterScreen,
@@ -113,6 +116,11 @@ const AuthStack = createStackNavigator({
       headerShown: false
     }
   },
+  Login: {
+    screen: LoginScreen,
+    navigationOptions: { headerShown: false }
+  },
+  
 
 })
 

@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     botao:{
         height:42,
         borderRadius:20,
-        backgroundColor: '#32151C',
+        backgroundColor: '#4b0082',
         width: '80%',
         justifyContent: "center",
         alignItems: "center"

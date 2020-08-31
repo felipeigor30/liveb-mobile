@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     cardView:{
-        backgroundColor: '#fff',
+        backgroundColor: '#4b0082',
         flex:1,
         justifyContent: "center",
         alignItems: "center",

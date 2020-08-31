@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     cardView: {
-        backgroundColor: '#fff',
+        backgroundColor: '#4b0082',
         flex: 1,
         paddingTop: 20,
         paddingHorizontal: 30,
@@ -68,8 +68,7 @@ const styles = StyleSheet.create({
     title: {
         marginVertical: 10,
         fontSize: 12,
-
-        color: '#8D8D8D'
+        color: '#fff'
     },
     boxInfo: {
         backgroundColor: '#F3F3F3',

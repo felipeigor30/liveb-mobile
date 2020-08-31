@@ -65,7 +65,7 @@ export default class ContratoBlack extends Component {
                             boxType={'circle'}
                             tintColor={'#fff'}
                             onCheckColor={'#FFF'}
-                            onFillColor={'#32151C'}
+                            onFillColor={'#4b0082'}
                             onTintColor={'#F4DCF8'}
                             animationDuration={0.5}
                             disabled={false}
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     botaoConcordar: {
         height: 42,
         borderRadius: 20,
-        backgroundColor: '#32151C',
+        backgroundColor: '#4b0082',
         width: '80%',
         justifyContent: "center",
         alignItems: "center",
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     botaoConcordarDisable: {
         height: 42,
         borderRadius: 20,
-        backgroundColor: '#32151C50',
+        backgroundColor: '#4b008230',
         width: '80%',
         justifyContent: "center",
         alignItems: "center",
