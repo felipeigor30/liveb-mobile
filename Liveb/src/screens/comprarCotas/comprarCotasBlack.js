@@ -16,12 +16,28 @@ export default class ComprarCotasBlack extends Component {
             valor: 25000
         }
     }
+
+    backAction = () => {
+        return true;
+    };
+    
+    componentWillUnmount() {
+        this.backHandler.remove();
+    }
+    componentDidMount(){
+        this.backHandler = BackHandler.addEventListener(
+          "hardwareBackPress",
+          this.backAction
+        );
+    }
     saveAmountQuotas = () => {
         const userID = firebase.auth().currentUser.uid
         firebase.firestore().collection('users').doc(userID).update({
             quantidadeValorCotas: this.state.count,
             valorInvestido: this.state.valor,
-            investimentoPago: false
+            investimentoPago: false,
+            possuiCotaComprada: true
+            
         }).then(firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.props.navigation.navigate("ConfirmarDeposito")
@@ -66,7 +82,7 @@ export default class ComprarCotasBlack extends Component {
                         </View>
                         <View style={{ justifyContent: "center", }}>
                             <Text style={{ fontSize: 22, textAlign: "center", marginVertical: 10,  color: '#fff' }}>Valor total do seu investimento</Text>
-                            <Text style={{ fontSize: 18, textAlign: "center", fontWeight: '800', marginBottom: 20 }}>R$ {this.state.valor},00</Text>
+                            <Text style={{ fontSize: 18, textAlign: "center", fontWeight: '800', marginBottom: 20, color: '#fff'}}>R$ {this.state.valor},00</Text>
                         </View>
                     </View>
                     <View style={{ justifyContent: "center", alignItems: "center" }}>

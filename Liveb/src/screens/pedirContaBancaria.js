@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Image, Dimensions} from 'react-native'
+import {View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Image, Dimensions, BackHandler,Alert } from 'react-native'
 
 import firebase from '@react-native-firebase/app'
 import auth from '@react-native-firebase/auth'
@@ -14,11 +14,12 @@ export default class PedirContaBancaria extends Component{
         
     }
     
-    requestBankDetails = () => { 
+    requestBankDetails = () => {
+    
       this.props.navigation.navigate("CadastroContaBancaria")
-  }
-    componentDidMount(){
     }
+    
+
 
     render(){
         return(
@@ -35,7 +36,7 @@ export default class PedirContaBancaria extends Component{
                 <View style={styles.viewButton}>
                     
                     <TouchableOpacity
-                    onPress={this.requestBankDetails}
+                    onPress={() => this.requestBankDetails()}
                     style={styles.botao}>
                         <Text style={styles.textoBotao}>Cadastrar conta Bancaria</Text>
                     </TouchableOpacity>

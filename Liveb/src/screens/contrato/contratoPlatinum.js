@@ -36,7 +36,7 @@ export default class ContratoPlatinum extends Component {
                         var confirmouContrato = doc.data().confirmouContrato
                         firebase.auth().onAuthStateChanged((user) => {
                             if (user && confirmouContrato === true) {
-                                this.props.navigation.navigate("Recipe")
+                                this.props.navigation.navigate("AguardandoPagamento")
                             } else {
                                 console.log('nao')
                             }
@@ -49,7 +49,7 @@ export default class ContratoPlatinum extends Component {
         return (
             <View style={styles.container}>
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <WebView source={{ uri: 'https://drive.google.com/file/d/1rfwJ4oFmF5Sb0-ax-5jpYriJC6duE36G/view?usp=sharing' }}
+                    <WebView source={{ uri: 'https://drive.google.com/file/d/1RtAb-KU5TMSbLdHHQEP0aA1JhD6V8RQS/view?usp=sharing' }}
                         style={{ width: width2, marginTop: 55 }} />
 
                     <View style={{ flexDirection: 'row', alignItems: "center", marginVertical: 20 }}>

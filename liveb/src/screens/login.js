@@ -40,7 +40,6 @@ export default class LoginScreen extends Component {
                 <View style={styles.header}>
                     <Animatable.Image
                         animation="fadeInUp"
-                        fadeDuration="none"
                         source={require('../assets/logoLiveb.png')}
                         style={styles.logo}
                         resizeMode='stretch' />

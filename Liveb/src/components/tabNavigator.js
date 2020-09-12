@@ -1,6 +1,6 @@
 import { } from 'react-native-gesture-handler';
 import React from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 Icon.loadFont();
 import { createAppContainer } from 'react-navigation';
@@ -85,6 +85,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
 
                 tabBarIcon: ({ tintColor }) => (
                     <View>
+                        {/* <Image source={require('../assets/close.png')}  style={{color: tintColor}}/> */}
                         <Icon style={{ color: tintColor }} size={25} name="cog" />
                     </View>
                 )

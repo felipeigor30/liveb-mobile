@@ -13,6 +13,7 @@ export default class ComprarCotasGold extends Component {
         this.state = {
             count: 1,
             valor: 1000,
+            
 
         }
     }
@@ -21,12 +22,14 @@ export default class ComprarCotasGold extends Component {
         firebase.firestore().collection('users').doc(userID).update({
             quantidadeValorCotas: this.state.count,
             valorInvestido: this.state.valor,
-            investimentoPago: false
+            investimentoPago: false,
+            possuiCotaComprada: true
         }).then(firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.props.navigation.navigate("ConfirmarDeposito")
             } else {
                 console.log('erro')
+            
             }
         }))
     }
@@ -72,7 +75,7 @@ export default class ComprarCotasGold extends Component {
                     <View style={{ justifyContent: "center", alignItems: "center" }}>
 
 
-                        <TouchableOpacity onPress={this.saveAmountQuotas} style={styles.botaoComprar}>
+                        <TouchableOpacity onPress={() => this.saveAmountQuotas()} style={styles.botaoComprar}>
                             <Text style={styles.textoButton}>Comprar</Text>
                         </TouchableOpacity>
                     </View>

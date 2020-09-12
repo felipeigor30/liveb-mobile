@@ -43,6 +43,7 @@ export default class DadosPessoaisScreen extends Component {
                 <View style={styles.titleContainer}>
                     <Text style={styles.titlePage}>Dados Pessoais</Text>
                     <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+                        
                         <Image source={require('../assets/close.png')}></Image>
                     </TouchableOpacity>
                 </View>

@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React,{Component} from 'react'
 import * as Animatable from 'react-native-animatable'
-import { StyleSheet, View, Text, Dimensions, TouchableOpacity } from 'react-native'
+import {View, Text, StyleSheet, TouchableOpacity, Dimensions} from 'react-native'
 
-const InitialScreen = ({navigation}) => {
-  return (
-    <View style={styles.container}>
+export default class AguardandoPagamento extends Component{
+  render(){
+    return(
+      <View style={styles.container}>
       <View style={styles.header}>
         <Animatable.Image
           animation="bounceIn"
@@ -13,19 +14,13 @@ const InitialScreen = ({navigation}) => {
           resizeMode='stretch' />
       </View>
       <Animatable.View style={styles.footer} animation='fadeInUpBig'>
-        <Text style={styles.title}>A melhor maneira para INVESTIR</Text>
-        <Text style={styles.text}>Acesse ou crie, seja um LIVEBER agora mesmo</Text>
-        <View style={styles.button}>
-        <TouchableOpacity style={styles.signIn} onPress={() => navigation.navigate('Register')}><Text style={styles.textSign}>Me tornar um LIVEBER</Text></TouchableOpacity>
-        </View>
-        <View style={styles.button}>
-        <TouchableOpacity style={styles.signUp} onPress={() => navigation.navigate('Login')}><Text style={styles.textSignUp}>Acessar minha conta</Text></TouchableOpacity>
-        </View>
+        <Text style={styles.title}>Quase tudo pronto LIVEBER</Text>
+        <Text style={styles.text}>Nossa equipe está analisando seu cadastro e assim que estiver tudo pronto, você poderá ver seus rendimentos.</Text>
       </Animatable.View>
     </View>
-  )
+    )
+  }
 }
-
 const { height } = Dimensions.get("screen");
 const height_logo = height * 0.28;
 const { width } = Dimensions.get("screen");
@@ -97,5 +92,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   }
 })
-
-export default InitialScreen

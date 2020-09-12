@@ -86,7 +86,7 @@ export default class HomeScreen extends Component {
         <Animatable.View style={styles.cardViewIncome} animation='slideInUp'>
           <Text style={{ color: '#fff' }}>Rendimentos</Text>
           <FlatList
-            ItemSeparatorComponent={this.renderSeparator}
+            
             data={this.state.newPagamentos}
             keyExtractor={item => item.id}
             renderItem={({ item }) => this.renderList(item)}
@@ -145,7 +145,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   componentFlatlistItem: {
-    marginVertical: 10
+    marginVertical: 10,
+    
 
   }
 });

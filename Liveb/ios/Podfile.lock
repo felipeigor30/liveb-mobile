@@ -602,6 +602,8 @@ PODS:
     - React
   - RNCMaskedView (0.1.10):
     - React
+  - RNCPicker (1.6.6):
+    - React
   - RNFBApp (8.3.0):
     - Firebase/CoreOnly (~> 6.28.1)
     - React
@@ -662,6 +664,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCCheckbox (from `../node_modules/@react-native-community/checkbox`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
+  - "RNCPicker (from `../node_modules/@react-native-community/picker`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBFirestore (from `../node_modules/@react-native-firebase/firestore`)"
@@ -758,6 +761,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/checkbox"
   RNCMaskedView:
     :path: "../node_modules/@react-native-community/masked-view"
+  RNCPicker:
+    :path: "../node_modules/@react-native-community/picker"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBAuth:
@@ -830,6 +835,7 @@ SPEC CHECKSUMS:
   ReactCommon: d22162ab8f1358c53dfcd0f9c4d82d38facdbc48
   RNCCheckbox: 357578d3b42652c78ee9a1bb9bcfc3195af6e161
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
+  RNCPicker: 494015f2b7ec4bee5484b6f235aa19691426dcdb
   RNFBApp: d55b3a69d199cff25ecf4f3bf41a86c47aa37d57
   RNFBAuth: 8cdec65b3c88e8f5b2aa0109d8cbfbaaa73fb379
   RNFBFirestore: 85df763f15f97c0cc8ec0a429aaa18dc8196e386

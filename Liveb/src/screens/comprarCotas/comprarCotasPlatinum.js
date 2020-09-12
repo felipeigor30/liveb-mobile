@@ -20,7 +20,9 @@ export default class ComprarCotasPlatinum extends Component{
         firebase.firestore().collection('users').doc(userID).update({
             quantidadeValorCotas: this.state.count,
             valorInvestido: this.state.valor,
-            investimentoPago: false
+            investimentoPago: false,
+            possuiCotaComprada: true
+            
         }).then(firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.props.navigation.navigate("ConfirmarDeposito")
@@ -70,7 +72,7 @@ export default class ComprarCotasPlatinum extends Component{
                 <View style={{flex:2, justifyContent: "center", alignItems:"center"}}>
                     
                     
-                    <TouchableOpacity onPress={this.saveAmountQuotas} style={styles.botaoComprar}>
+                    <TouchableOpacity onPress={() => this.saveAmountQuotas()} style={styles.botaoComprar}>
                         <Text style={styles.textoButton}>COMPRAR</Text>
                     </TouchableOpacity>
                 </View>

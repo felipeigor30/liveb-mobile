@@ -22,6 +22,7 @@ import Recipe from './screens/recipe';
 import TabNavigator from './components/tabNavigator';
 import HomeScreen from './screens/home'
 import EscolherPlano from './screens/escolherPlano'
+import AguardandoPagamento from './screens/aguardandoPagamento'
 
 import ConfirmarPlanoGold from './screens/confirmarPlano/confirmarPlanoGold'
 import ConfirmarPlanoPlatinum from './screens/confirmarPlano/confirmarPlanoPlatinum'
@@ -82,6 +83,8 @@ const AppStack = createStackNavigator({
   Home: { screen: HomeScreen, navigationOptions: { headerShown: false } },
   EscolherPlano: { screen: EscolherPlano, navigationOptions: { headerShown: false } },
 
+  
+
   ConfirmarPlanoGold: { screen: ConfirmarPlanoGold, navigationOptions: { headerShown: false } },
   ConfirmarPlanoPlatinum: { screen: ConfirmarPlanoPlatinum, navigationOptions: { headerShown: false } },
   ConfirmarPlanoBlack: { screen: ConfirmarPlanoBlack, navigationOptions: { headerShown: false } },
@@ -97,7 +100,7 @@ const AppStack = createStackNavigator({
   ContratoGold: { screen: ContratoGold, navigationOptions: { headerShown: false } },
   ContratoPlatinum: { screen: ContratoPlatinum, navigationOptions: { headerShown: false } },
   ContratoBlack: { screen: ContratoBlack, navigationOptions: { headerShown: false } },
-
+  AguardandoPagamento:{screen: AguardandoPagamento, navigationOptions: { headerShown: false }  },
   ContaLiveb: { screen: ContaLiveb, navigationOptions: { headerShown: false } },
   DadosPessoais: { screen: DadosPessoaisScreen, navigationOptions: { headerShown: false } },
   ContaBancaria: ContaBancaria,

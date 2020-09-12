@@ -9,6 +9,20 @@ export const cpfMask = value => {
     
 }
 
+export const rgMask = value => {
+    
+  value = value.replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
+  value = value.replace(/(\d{2})(\d)/, '$1.$2')
+  value = value.replace(/(\d{3})(\d)/, '$1.$2')
+  value = value.replace(/(\d{3})(\d{1,2})/, '$1-$2')
+  value = value.replace(/(-\d{1})\d+?$/, '$1')
+  
+  return value
+    
+}
+
+
+
 export const phoneMask = value => {
   value = value.replace(/\D/g, "")
   // (11)1111-1111

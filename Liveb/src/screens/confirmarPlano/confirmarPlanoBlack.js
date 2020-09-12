@@ -3,8 +3,60 @@ import { View, Text, TouchableOpacity, StyleSheet, Dimensions, ScrollView } from
 import * as Animatable from 'react-native-animatable'
 const { width } = Dimensions.get("window");
 
+import firebase from '@react-native-firebase/app'
+import auth from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore'
+import handleData from '../../components/handleData'
 export default class ConfirmarPlanoBlack extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
 
+        }
+        
+    }
+    handlePlanBlack = () => {
+        const userID = firebase.auth().currentUser.uid
+        firebase.firestore().collection('users').doc(userID).update({
+            possuiPlano: true,
+            nomePlano: 'Plano BLACK',
+            numeroPlano: 3,
+            dataEscolhaPlano: firebase.firestore.Timestamp.fromDate(new Date())
+        })
+            .then(firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    this.props.navigation.navigate("ComprarCotasBlack")
+                }
+            }))
+        firebase.firestore().collection('pagamentos').doc(userID).set({
+            pags: [
+                { id: 1, pagar: handleData(1), statusPagamento: false },
+                { id: 2, pagar: handleData(2), statusPagamento: false },
+                { id: 3, pagar: handleData(3), statusPagamento: false },
+                { id: 4, pagar: handleData(4), statusPagamento: false },
+                { id: 5, pagar: handleData(5), statusPagamento: false },
+                { id: 6, pagar: handleData(6), statusPagamento: false },
+                { id: 7, pagar: handleData(7), statusPagamento: false },
+                { id: 8, pagar: handleData(8), statusPagamento: false },
+                { id: 9, pagar: handleData(9), statusPagamento: false },
+                { id: 10, pagar: handleData(10), statusPagamento: false },
+                { id: 11, pagar: handleData(11), statusPagamento: false },
+                { id: 12, pagar: handleData(12), statusPagamento: false },
+                { id: 13, pagar: handleData(13), statusPagamento: false },
+                { id: 14, pagar: handleData(14), statusPagamento: false },
+                { id: 15, pagar: handleData(15), statusPagamento: false },
+                { id: 16, pagar: handleData(16), statusPagamento: false },
+                { id: 17, pagar: handleData(17), statusPagamento: false },
+                { id: 18, pagar: handleData(18), statusPagamento: false },
+                { id: 19, pagar: handleData(19), statusPagamento: false },
+                { id: 20, pagar: handleData(20), statusPagamento: false },
+                { id: 21, pagar: handleData(21), statusPagamento: false },
+                { id: 22, pagar: handleData(22), statusPagamento: false },
+                { id: 23, pagar: handleData(22), statusPagamento: false },
+                { id: 24, pagar: handleData(24), statusPagamento: false },
+            ],
+        })
+    }
 
     render() {
         return (
@@ -193,7 +245,7 @@ export default class ConfirmarPlanoBlack extends Component {
                             </View>
                         </View>
                     </ScrollView>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('ComprarCotasBlack')} style={styles.button}>
+                    <TouchableOpacity onPress={() => this.handlePlanBlack()} style={styles.button}>
                         <Text style={styles.buttonText}>Comprar cotas</Text>
                     </TouchableOpacity>
                 </Animatable.View >

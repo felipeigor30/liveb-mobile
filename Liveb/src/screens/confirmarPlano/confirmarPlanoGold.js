@@ -2,9 +2,40 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions, ScrollView } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 const { width } = Dimensions.get("window");
-
+import firebase from '@react-native-firebase/app'
+import auth from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore'
+import handleData from '../../components/handleData'
 export default class ConfirmarPlanoGold extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
 
+        }
+        
+    }
+    handlePlanGold = () => {
+
+        const userID = firebase.auth().currentUser.uid
+        firebase.firestore().collection('users').doc(userID).update({
+            possuiPlano: true,
+            nomePlano: 'Plano GOLD',
+            numeroPlano: 1,
+            dataEscolhaPlano: firebase.firestore.Timestamp.fromDate(new Date())
+
+        }).then(firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                firebase.firestore().collection('pagamentos').doc(userID).set({
+                    pags: [
+                        { id: 1, pagar: handleData(3), statusPagamento: false },
+                        { id: 2, pagar: handleData(6), statusPagamento: false },
+                    ],
+                })
+                this.props.navigation.navigate("ComprarCotasGold")
+            }
+        }))
+
+    }
 
     render() {
         return (
@@ -193,9 +224,7 @@ export default class ConfirmarPlanoGold extends Component {
                             
                         </View>
                     </ScrollView>
-                    
-                    
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('ComprarCotasGold')} style={styles.button}>
+                    <TouchableOpacity onPress={() => this.handlePlanGold()} style={styles.button}>
                         <Text style={styles.buttonText}>Comprar cotas</Text>
                     </TouchableOpacity>
                 </Animatable.View>

@@ -34,7 +34,7 @@ export default class ContratoGold extends Component {
                         var confirmouContrato = doc.data().confirmouContrato
                         firebase.auth().onAuthStateChanged((user) => {
                             if (user && confirmouContrato === true) {
-                                this.props.navigation.navigate("Recipe")
+                                this.props.navigation.navigate("AguardandoPagamento")
                             } else {
                                 console.log('nao')
                             }
@@ -47,7 +47,7 @@ export default class ContratoGold extends Component {
         return (
             <View style={styles.container}>
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <WebView source={{ uri: 'https://drive.google.com/file/d/1XAu0l5ZgJwP2s1ddu0KHI7ahpp8LRDVD/view?usp=sharing' }}
+                    <WebView source={{ uri: 'https://drive.google.com/file/d/1N4B_2mcKwcgkvsDpCPiBALl55NBWhl6X/view?usp=sharing' }}
                         style={{ width: width2, marginTop: 55 }} />
                     <View style={{ flexDirection: 'row', alignItems: "center", marginVertical: 20 }}>
                         <CheckBox style={{ width: 30, height: 30, marginHorizontal: 15 }}

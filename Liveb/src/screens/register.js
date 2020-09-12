@@ -1,13 +1,13 @@
 import 'react-native-gesture-handler'
 import React, { Component } from 'react'
 import * as Animatable from 'react-native-animatable'
-import { View, Text, SafeAreaView, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity, KeyboardAvoidingView, Platform, Dimensions } from 'react-native'
+import { View, Text,  StyleSheet , TextInput, ScrollView, TouchableOpacity, KeyboardAvoidingView, Platform, Dimensions, Alert } from 'react-native'
 
 import firebase from '@react-native-firebase/app'
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
 
-import { cpfMask, phoneMask } from '../components/mask'
+import { cpfMask, rgMask, phoneMask } from '../components/mask'
 const { height } = Dimensions.get("screen");
 const height_logo = height * 0.18;
 const { width } = Dimensions.get("screen");
@@ -19,55 +19,70 @@ export default class RegisterScreen extends Component {
     }
     state = {
         name: "",
-        lastName: "",
         phone: "",
         cpf: '',
+        rg: '',
         email: '',
         password: '',
+        passwordConfirm: '',
         possuiPlano: false,
         nomePlano: '',
         numeroPlano: 0,
         valorInvestido: 0,
         errorMessage: null,
-        secure: true
-
-
+        secure: true,
+        confirmouContrato: false
     }
+
 
     handleChangeCPF(cpf) {
         this.setState({ cpf: cpfMask(cpf) })
     }
+    handleChangeRG(rg) {
+        this.setState({ rg: rgMask(rg) })
+    }
     handleChangePHONE(phone) {
         this.setState({ phone: phoneMask(phone) })
     }
+   
+
     handleCadastro = () => {
-        if (this.state.name.trim() === "" || this.state.lastName.trim() === "" || this.state.phone.trim() === "" || this.state.cpf.trim() === "" || this.state.email.trim() === "" || this.state.password.trim() === "") {
+
+        if (this.state.name.trim() === "" || this.state.phone.trim() === "" || this.state.cpf.trim() === "" || this.state.email.trim() === "" || this.state.password.trim() === "" || this.state.passwordConfirm.trim() === "" || this.state.rg.trim() === '') {
             this.setState(() => ({ nameError: "Todos os campos devem ser preenchidos." }));
         } else {
-            this.setState(() => ({ nameError: null }));
-
-            const { name, lastName, phone, cpf, email, password, plano, nomePlano, numeroPlano } = this.state;
-            firebase.auth().createUserWithEmailAndPassword(email, password)
+            const { name, phone, cpf, email, password, plano, nomePlano, numeroPlano, rg } = this.state;
+            if(this.state.password != this.state.passwordConfirm){
+                Alert.alert("Atenção, as senhas digitadas não são iguais!")
+            }else{
+                firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then(userCredentials => {
                     const userID = userCredentials.user.uid
                     firebase.firestore().collection('users').doc(userID).set({
                         name: name,
-                        lastName: lastName,
                         email: email,
                         phone: phone,
                         cpf: cpf,
+                        rg: rg,
                         possuiPlano: false,
+                        possuiCotaComprada: false,
+                        possuiContaBancaria: false,
+                        confirmouContrato: false,
                         nomePlano: '',
                         numeroPlano: 0,
                         valorInvestido: 0,
                     })
-                    return userCredentials.user.updateProfile({ displayName: this.state.name, })
-                }
-                )
-                .catch(error => this.setState({ errorMessage: error.message }))
-
+                    
+                        return userCredentials.user.updateProfile({ displayName: this.state.name, })})
+                    .catch(error => {this.setState({ nameError: error.code })})
+            }
+            
         }
+
+
     }
+
+    
     changeSecureEntry = () => {
         if (this.state.secure === true) {
             this.setState({ secure: false })
@@ -85,31 +100,28 @@ export default class RegisterScreen extends Component {
                 <View style={styles.header}>
                     <Animatable.Image
                         animation="fadeInUp"
-                        fadeDuration="none"
                         source={require('../assets/logoLiveb.png')}
                         style={styles.logo}
                         resizeMode='stretch' />
                 </View>
                 <Animatable.View style={styles.footer} animation='fadeInUp'>
+                    {this.state.nameError === 'auth/invalid-email' && (<Text style={{ color: "red", alignSelf: "center" }}>Formato de e-mail inválido</Text>) ||
+                     this.state.nameError === 'auth/weak-password' && (<Text style={{ color: "red", alignSelf: "center" }}>A senha fornecida é inválida e deve ter pelo menos 6 caracteres</Text>) ||
+                     this.state.nameError === 'auth/email-already-in-use' && (<Text style={{ color: "red", alignSelf: "center" }}>Esse e-mail já está sendo utilizado por outro usuário</Text>)||
+                     !!this.state.nameError &&(<Text style={{ color: "red", alignSelf: "center" }}> {this.state.nameError}</Text>)
+                    
+                    }
                     <ScrollView keyboardShouldPersistTaps="handled">
 
                         <View style={styles.containerForm}>
-                            {!!this.state.nameError && (
-                                <Text style={{ color: "red", alignSelf: "center" }}>{this.state.nameError}</Text>
-                            )}
+
                             <TextInput style={styles.input}
                                 placeholder="Nome"
                                 placeholderTextColor="#fff"
                                 onChangeText={name => this.setState({ name })}
                                 value={this.state.name}
                             />
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Sobrenome"
-                                placeholderTextColor="#fff"
-                                onChangeText={lastName => this.setState({ lastName })}
-                                value={this.state.lastName}
-                            />
+
                             <TextInput
                                 style={styles.input}
                                 autoCapitalize='none'
@@ -133,6 +145,17 @@ export default class RegisterScreen extends Component {
                                     <Text style={styles.showPassButton}>ver</Text>
                                 </TouchableOpacity>
                             </View>
+                            <View style={styles.viewPassword}>
+                                <TextInput style={styles.inputPass}
+                                    autoCapitalize='none'
+                                    placeholder="Confirmar senha"
+                                    placeholderTextColor="#fff"
+                                    secureTextEntry={this.state.secure}
+                                    onChangeText={passwordConfirm => this.setState({ passwordConfirm })}
+                                    value={this.state.passwordConfirm}
+                                />
+                                
+                            </View>
 
                             <TextInput
                                 style={styles.input}
@@ -149,18 +172,25 @@ export default class RegisterScreen extends Component {
                                 maxLength={14}
                                 placeholder="CPF"
                                 placeholderTextColor="#fff"
-                                keyboardType="numeric"
+                                keyboardType="phone-pad"
                                 onChangeText={cpf => this.handleChangeCPF(cpf)}
                                 value={this.state.cpf}
+                            />
+                            <TextInput
+                                style={styles.input}
+                                maxLength={14}
+                                placeholder="RG"
+                                placeholderTextColor="#fff"
+                                keyboardType="phone-pad"
+                                onChangeText={rg => this.handleChangeRG(rg)}
+                                value={this.state.rg}
                             />
 
 
                         </View>
-
-                    </ScrollView>
-                    <TouchableOpacity
+                        <TouchableOpacity
                         style={styles.signInButton}
-                        onPress={this.handleCadastro}>
+                        onPress={() => this.handleCadastro()}>
                         <Text style={styles.signInButtonText} >Cadastrar</Text>
                     </TouchableOpacity>
 
@@ -169,6 +199,8 @@ export default class RegisterScreen extends Component {
                         onPress={() => this.props.navigation.navigate('Login')}>
                         <Text style={styles.signUpButtonText}>Já tem cadastro? Clique aqui</Text>
                     </TouchableOpacity>
+                    </ScrollView>
+                    
                 </Animatable.View>
             </KeyboardAvoidingView>
         );
