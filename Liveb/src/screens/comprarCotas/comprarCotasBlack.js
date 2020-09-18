@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import * as Animatable from 'react-native-animatable'
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Image } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Image, BackHandler } from 'react-native'
 
 import firebase from '@react-native-firebase/app'
 import auth from '@react-native-firebase/auth'
@@ -17,19 +17,7 @@ export default class ComprarCotasBlack extends Component {
         }
     }
 
-    backAction = () => {
-        return true;
-    };
     
-    componentWillUnmount() {
-        this.backHandler.remove();
-    }
-    componentDidMount(){
-        this.backHandler = BackHandler.addEventListener(
-          "hardwareBackPress",
-          this.backAction
-        );
-    }
     saveAmountQuotas = () => {
         const userID = firebase.auth().currentUser.uid
         firebase.firestore().collection('users').doc(userID).update({

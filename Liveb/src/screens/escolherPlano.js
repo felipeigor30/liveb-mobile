@@ -22,7 +22,7 @@ export default class EscolherPlano extends Component {
         }
         
     }
-
+    
     handlePlanGold = () => {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
@@ -88,7 +88,6 @@ export default class EscolherPlano extends Component {
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.escolhaView} onPress={this.handlePlanBlack}>
-
                             <View style={styles.botaoViewBlack}>
                                 <Image source={require('../assets/black.png')} style={{ resizeMode: "contain" }} />
                                 <Text style={styles.botaoTextoBlack}>PLANO BLACK</Text>
@@ -121,9 +120,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: 0
     },
-    scrollView: {
-        flex: 1
-    },
+    
     view: {
         flex: 1,
     },
@@ -155,11 +152,14 @@ const styles = StyleSheet.create({
         marginVertical: 3,
         fontWeight: 'bold',
     },
+    scrollView: {
+        flex:1,
+    },
     escolhaView: {
         alignSelf: "center",
         height: '70%',
         width,
-        padding: 10,
+        padding: 10
     },
     botaoViewGold: {
         backgroundColor: '#4B0082',

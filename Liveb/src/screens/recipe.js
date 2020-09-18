@@ -17,18 +17,18 @@ export default class Recipe extends Component{
         }
       }
 
-    // backAction = () => {
-    //     return true;
-    // };
+    backAction = () => {
+        return true;
+    };
     
     componentWillUnmount() {
-        // this.backHandler.remove();
+        this.backHandler.remove();
     }
     componentDidMount(){
-      // this.backHandler = BackHandler.addEventListener(
-      //   "hardwareBackPress",
-      //   this.backAction
-      // );
+      this.backHandler = BackHandler.addEventListener(
+        "hardwareBackPress",
+        this.backAction
+      );
         firebase.auth().onAuthStateChanged((user)=>{
           if(user){
             const {displayName,email} = firebase.auth().currentUser;

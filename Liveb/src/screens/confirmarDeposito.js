@@ -41,7 +41,7 @@ export default class ConfirmarDeposito extends Component {
                     <Text style={{ color: '#fff', fontSize: 30, fontWeight: 'bold', alignSelf: 'center', marginBottom: 15 }}>Atenção</Text>
 
                 </View>
-                <Animatable.View style={styles.cardViewIncome} animation="flipInX">
+                <Animatable.View style={styles.cardViewIncome} animation="fadeInUpBig">
                     <View style={{ flex: 1, padding: 1 }}>
                         <Text style={{ color: '#fff' }}>
                             Para concluir seu investimento

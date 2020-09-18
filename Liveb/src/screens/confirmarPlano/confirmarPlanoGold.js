@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions, ScrollView, Image } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 const { width } = Dimensions.get("window");
 import firebase from '@react-native-firebase/app'
@@ -41,6 +41,9 @@ export default class ConfirmarPlanoGold extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.viewTitle}>
+                    <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+                        <Image source={require('../../assets/backButton.png')} style={{marginHorizontal:20,}} />
+                    </TouchableOpacity>
                     <Text style={styles.title}>Conheça o plano</Text>
                 </View>
 
@@ -49,7 +52,7 @@ export default class ConfirmarPlanoGold extends Component {
 
                     <ScrollView style={{flex:1}} showsVerticalScrollIndicator={false}>
                         <View style={styles.viewTitleContent}>
-                            <Text style={styles.titleInfo}>retorno</Text>
+                            <Text style={styles.titleInfo}>rendimentos</Text>
                         </View>
                         <View>
                             <View>
@@ -243,6 +246,7 @@ const styles = StyleSheet.create({
     viewTitle: {
         marginTop: 50,
         marginBottom: 20,
+        flexDirection: "column"
     },
     title: {
         color: '#fff',

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import * as Animatable from 'react-native-animatable'
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Image } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Image,BackHandler } from 'react-native'
 
 import firebase from '@react-native-firebase/app'
 import auth from '@react-native-firebase/auth'
@@ -17,6 +17,7 @@ export default class ComprarCotasGold extends Component {
 
         }
     }
+    
     saveAmountQuotas = () => {
         const userID = firebase.auth().currentUser.uid
         firebase.firestore().collection('users').doc(userID).update({
