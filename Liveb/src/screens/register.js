@@ -48,7 +48,7 @@ export default class RegisterScreen extends Component {
 
     handleCadastro = () => {
 
-        if (this.state.name.trim() === "" || this.state.phone.trim() === "" || this.state.cpf.trim() === "" || this.state.email.trim() === "" || this.state.password.trim() === "" || this.state.passwordConfirm.trim() === "" || this.state.rg.trim() === '') {
+        if (this.state.name.trim() === "" || this.state.phone.trim() === "" || this.state.cpf.trim() === "" || this.state.email.trim() === "" || this.state.password.trim() === "" || this.state.passwordConfirm.trim() === "") {
             this.setState(() => ({ nameError: "Todos os campos devem ser preenchidos." }));
         } else {
             const { name, phone, cpf, email, password, plano, nomePlano, numeroPlano, rg } = this.state;
@@ -179,7 +179,7 @@ export default class RegisterScreen extends Component {
                             <TextInput
                                 style={styles.input}
                                 maxLength={14}
-                                placeholder="RG"
+                                placeholder="RG (Opcional)"
                                 placeholderTextColor="#fff"
                                 keyboardType="phone-pad"
                                 onChangeText={rg => this.handleChangeRG(rg)}

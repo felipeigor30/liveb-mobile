@@ -37,12 +37,12 @@ export default class Configuracao extends Component{
                     <Icon name="chevron-forward" size={22} style={styles.icon} />
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonConfig}>
+                {/* <TouchableOpacity style={styles.buttonConfig}>
                     <Text style={styles.buttonConfigText}>Notificações</Text>
                     <View style={styles.viewIcon}>
                     <Icon name="chevron-forward" size={22} style={styles.icon} />
                     </View>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 <TouchableOpacity style={styles.buttonConfig} onPress={() =>this.props.navigation.navigate('ContaLiveb')}>
                     <Text style={styles.buttonConfigText}>Conta bancaria Liveb</Text>
                     <View style={styles.viewIcon}>

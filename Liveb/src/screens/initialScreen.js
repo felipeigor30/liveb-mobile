@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
 
   },
   footer: {
-    flex: 1,
+    flex: 2,
     backgroundColor: '#4b0082',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,

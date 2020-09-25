@@ -16,6 +16,7 @@ export default class DadosPessoaisScreen extends Component {
             email: '',
             cpf: '',
             telefone: '',
+            rg: '',
         }
     }
     componentDidMount() {
@@ -28,11 +29,13 @@ export default class DadosPessoaisScreen extends Component {
                     var email = doc.data().email
                     var cpf = doc.data().cpf
                     var telefone = doc.data().phone
+                    var rg = doc.data().rg
                     this.setState({ nome: nome })
                     this.setState({ sobrenome: sobrenome })
                     this.setState({ email: email })
                     this.setState({ cpf: cpf })
                     this.setState({ telefone: telefone })
+                    this.setState({ rg: rg })
                 })
             }
         })
@@ -54,6 +57,8 @@ export default class DadosPessoaisScreen extends Component {
                     <View style={styles.boxInfo}><Text style={styles.info}>{this.state.email}</Text></View>
                     <View style={styles.boxTitle}><Text style={styles.title}>CPF </Text></View>
                     <View style={styles.boxInfo}><Text style={styles.info}>{this.state.cpf}</Text></View>
+                    <View style={styles.boxTitle}><Text style={styles.title}>RG </Text></View>
+                    <View style={styles.boxInfo}><Text style={styles.info}>{this.state.rg}</Text></View>
                     <View style={styles.boxTitle}><Text style={styles.title}>Telefone </Text></View>
                     <View style={styles.boxInfo}><Text style={styles.info}>{this.state.telefone}</Text></View>
                 </View>
