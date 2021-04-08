@@ -217,6 +217,7 @@ android {
         implementation project(':react-native-vector-icons')
         implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
         implementation "androidx.multidex:multidex:2.0.1"
+        implementation project(':@react-native-firebase_firestore')
         // add the Firebase SDK for Google Analytics
         implementation "com.google.firebase:firebase-analytics:17.2.2"
         // add SDKs for any other desired Firebase products

@@ -43,7 +43,6 @@ export default class HomeScreen extends Component {
 
   componentDidMount() {
 
-
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         const { displayName, email } = firebase.auth().currentUser;
@@ -59,15 +58,13 @@ export default class HomeScreen extends Component {
         })
         firebase.firestore().collection('users').doc(userID).onSnapshot(doc => {
           var status = doc.data().valorInvestido
-          if (status > 0) {
+          if (status != '' || status != ' ') {
             firebase.firestore().collection('pagamentos').doc(userID).onSnapshot((snapshot) => {
               const rest = [...snapshot.data().pags]
 
-              this.setState(this.state.newPagamentos = rest)
-              
-
+              this.setState(this.state.newPagamentos = rest);
             })
-          } 
+          }
         })
       }
     })
@@ -86,16 +83,13 @@ export default class HomeScreen extends Component {
         <Animatable.View style={styles.cardViewIncome} animation='slideInUp'>
           <Text style={{ color: '#fff' }}>Rendimentos</Text>
           <FlatList
-            
             data={this.state.newPagamentos}
             keyExtractor={item => item.id}
             renderItem={({ item }) => this.renderList(item)}
             // renderItem={({ item }) => <Text style={[(item.state === true) ? styles.statePago : styles.stateNaoPago]}>{item.title}</Text>}
             style={styles.componentFlatlistItem}
             showsVerticalScrollIndicator={false}
-
           />
-
         </Animatable.View>
       </SafeAreaView>
     );
@@ -146,7 +140,7 @@ const styles = StyleSheet.create({
   },
   componentFlatlistItem: {
     marginVertical: 10,
-    
+
 
   }
 });

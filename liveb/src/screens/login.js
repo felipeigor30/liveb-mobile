@@ -3,13 +3,9 @@ import React, { Component } from 'react'
 import * as Animatable from 'react-native-animatable'
 import { View, Text, SafeAreaView, TextInput, StyleSheet, Image, TouchableOpacity, Dimensions } from 'react-native'
 
-
-
 import firebase from '@react-native-firebase/app'
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
-
-
 
 
 const { height } = Dimensions.get("screen");
@@ -24,17 +20,11 @@ export default class LoginScreen extends Component {
 
     handleLogin = () => {
         const { email, password } = this.state;
-
         firebase.auth()
             .signInWithEmailAndPassword(email, password)
             .catch(error => this.setState({ errorMessage: error.message }))
-
     }
-
-
     render() {
-
-
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
@@ -45,7 +35,7 @@ export default class LoginScreen extends Component {
                         resizeMode='stretch' />
                 </View>
                 <Animatable.View style={styles.footer} animation='flipInX'>
-                
+
                     <View style={styles.errorMessage}>
                         {this.state.errorMessage && <Text style={styles.erro}>{this.state.errorMessage}</Text>}
                     </View>
@@ -54,13 +44,11 @@ export default class LoginScreen extends Component {
                         autoCapitalize='none'
                         placeholder="Email"
                         placeholderTextColor="#fff"
-
                         onChangeText={email => this.setState({ email })}
                         value={this.state.email}
                     />
 
                     <TextInput style={styles.inputPass}
-
                         autoCapitalize="none"
                         placeholder="Senha"
                         placeholderTextColor="#fff"
@@ -68,17 +56,16 @@ export default class LoginScreen extends Component {
                         onChangeText={password => this.setState({ password })}
                         value={this.state.password}
                     />
-
                     <TouchableOpacity>
                         <Text style={styles.forgotPassButton}>Esqueceu sua senha?</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.signInButton} onPress={this.handleLogin}>
                         <Text style={styles.signInButtonText}>Acessar minha conta</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.signUpButton} onPress={() => this.props.navigation.navigate('Register')}>
+                    {/* <TouchableOpacity style={styles.signUpButton} onPress={() => this.props.navigation.navigate('Register')}>
                         <Text style={styles.signUpButtonText}>Ainda não tem cadastro?<Text style={{ fontWeight: 'bold' }}> Clique aqui</Text></Text>
-                    </TouchableOpacity>
-                
+                    </TouchableOpacity> */}
+
                 </Animatable.View>
             </View>
         );
@@ -105,10 +92,10 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
         paddingVertical: 50,
-        paddingBottom:100,
+        paddingBottom: 100,
         paddingHorizontal: 30
     },
-    
+
     logo: {
         width: height_logo,
         height: height_logo
@@ -121,7 +108,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingStart: 20,
         marginTop: 10
-        
+
     },
     inputPass: {
         backgroundColor: "rgba(255,255,255,0.3)",
@@ -150,7 +137,7 @@ const styles = StyleSheet.create({
     signInButtonText: {
         color: "#fff",
         fontSize: 17,
-        
+
 
     },
     signUpButton: {

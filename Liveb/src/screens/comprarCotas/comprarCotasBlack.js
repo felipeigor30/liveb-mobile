@@ -17,7 +17,7 @@ export default class ComprarCotasBlack extends Component {
         }
     }
 
-    
+
     saveAmountQuotas = () => {
         const userID = firebase.auth().currentUser.uid
         firebase.firestore().collection('users').doc(userID).update({
@@ -25,7 +25,7 @@ export default class ComprarCotasBlack extends Component {
             valorInvestido: this.state.valor,
             investimentoPago: false,
             possuiCotaComprada: true
-            
+
         }).then(firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.props.navigation.navigate("ConfirmarDeposito")
@@ -69,8 +69,8 @@ export default class ComprarCotasBlack extends Component {
                             </TouchableOpacity>
                         </View>
                         <View style={{ justifyContent: "center", }}>
-                            <Text style={{ fontSize: 22, textAlign: "center", marginVertical: 10,  color: '#fff' }}>Valor total do seu investimento</Text>
-                            <Text style={{ fontSize: 18, textAlign: "center", fontWeight: '800', marginBottom: 20, color: '#fff'}}>R$ {this.state.valor},00</Text>
+                            <Text style={{ fontSize: 22, textAlign: "center", marginVertical: 10, color: '#fff' }}>Valor total do seu investimento</Text>
+                            <Text style={{ fontSize: 18, textAlign: "center", fontWeight: '800', marginBottom: 20, color: '#fff' }}>R$ {this.state.valor},00</Text>
                         </View>
                     </View>
                     <View style={{ justifyContent: "center", alignItems: "center" }}>
